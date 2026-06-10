@@ -46,9 +46,6 @@
     <div class="nav-dot active" data-section="hero">
         <span class="nav-tooltip">Home</span>
     </div>
-    <div class="nav-dot" data-section="about">
-        <span class="nav-tooltip">About</span>
-    </div>
     <div class="nav-dot" data-section="projects">
         <span class="nav-tooltip">Projects</span>
     </div>
@@ -68,18 +65,52 @@
     <section class="section hero" id="hero">
         <canvas class="hero-canvas" id="heroCanvas"></canvas>
         <div class="hero-content">
-            <p class="hero-kicker">Personal archive / product-minded developer</p>
-            <div class="hero-nameplate">
-                <span class="hero-pin"></span>
-                <h1 class="hero-name">
-                    <span class="hero-letter">L</span><span class="hero-letter">A</span><span class="hero-letter">Y</span><span class="hero-letter">A</span>
-                </h1>
-                <p class="hero-subtitle">会做 PPT、会聊客户、也能把想法写成能跑起来的代码。</p>
+            <div class="hero-primary">
+                <div class="hero-name-stack">
+                    <p class="hero-kicker">Personal archive / product-minded developer</p>
+                    <div class="hero-nameplate">
+                        <span class="hero-pin"></span>
+                        <h1 class="hero-name">
+                            <span class="hero-letter">L</span><span class="hero-letter">A</span><span class="hero-letter">Y</span><span class="hero-letter">A</span>
+                        </h1>
+                        <p class="hero-subtitle">会把客户和业务里的模糊问题，整理成清楚的流程、页面和功能。正在把全栈开发、产品理解和 AI 工具能力组合成真正可交付的项目能力。</p>
+                    </div>
+                    <div class="hero-stickers" aria-hidden="true">
+                        <span class="hero-sticker hero-sticker-code">需求到产品</span>
+                        <span class="hero-sticker hero-sticker-product">全栈实现</span>
+                        <span class="hero-sticker hero-sticker-note">AI + 小程序</span>
+                    </div>
+                </div>
+                <aside class="hero-intro-card" aria-label="Laya 的个人介绍">
+                    <div class="hero-avatar-row">
+                        <img src="个人插画.png" alt="Laya 的个人插画头像" class="hero-avatar">
+                        <div>
+                            <p class="hero-intro-label">About / merged note</p>
+                            <h2 class="hero-intro-title">把需求讲清楚，也把东西做出来。</h2>
+                        </div>
+                    </div>
+                    <p class="hero-intro-text">我关注全栈开发、AI 应用和产品相关方向，习惯先梳理目标、用户、流程和边界，再把它们变成可运行页面、清晰文档和可展示的项目。</p>
+                    <div class="hero-intro-tags">
+                        <span>需求文档</span>
+                        <span>客户沟通</span>
+                        <span>页面实现</span>
+                        <span>AI 工作流</span>
+                    </div>
+                </aside>
             </div>
-            <div class="hero-stickers" aria-hidden="true">
-                <span class="hero-sticker hero-sticker-code">full-stack</span>
-                <span class="hero-sticker hero-sticker-product">product sense</span>
-                <span class="hero-sticker hero-sticker-note">vibe coding</span>
+            <div class="hero-evidence" aria-label="项目能力概览">
+                <div class="hero-evidence-item">
+                    <span>已完成项目</span>
+                    <strong>询价系统 / AI 推荐 / 云仓小助手</strong>
+                </div>
+                <div class="hero-evidence-item">
+                    <span>覆盖能力</span>
+                    <strong>需求梳理 / 页面实现 / 云开发</strong>
+                </div>
+                <div class="hero-evidence-item">
+                    <span>当前方向</span>
+                    <strong>全栈开发 + 产品理解 + AI 落地</strong>
+                </div>
             </div>
         </div>
         <p class="hero-location">Chengdu, China / currently building quietly</p>
@@ -87,46 +118,11 @@
     </section>
 
     <!-- ============================================
-         ABOUT
-         ============================================ -->
-    <section class="section about" id="about">
-        <div class="container">
-            <p class="section-label">Chapter 01 / About Me</p>
-            <div class="about-grid">
-                <div class="about-avatar-wrap">
-                    <div class="about-avatar-frame">
-                        <div class="about-avatar-decor"></div>
-                        <img src="个人插画.png" alt="Laya 的个人插画头像" class="about-avatar" loading="eager">
-                    </div>
-                    <div class="about-tags">
-                        <span class="about-tag">全栈开发</span>
-                        <span class="about-tag">产品思维</span>
-                        <span class="about-tag">Vibe Coding</span>
-                        <span class="about-tag">粤菜爱好者</span>
-                    </div>
-                </div>
-                <div class="about-text">
-                    <p class="about-lede">我想成为一个靠谱的人：能把需求讲清楚，也能把东西做出来。</p>
-                    <p>具备<span class="interactive-word" data-note="能同时理解页面、接口、数据和部署，把想法拆成能落地的功能。">全栈开发</span>、<span class="interactive-word" data-note="会先问清楚目标、用户、流程和边界，再决定怎么做。">产品理解</span>与<span class="interactive-word" data-note="把客户说的模糊需求整理成清楚的问题、选择和下一步。">客户沟通</span>经验，能够参与从<span class="interactive-word" data-note="梳理角色、状态、异常情况和交付范围，让开发前的问题尽量暴露。">需求梳理</span>、方案表达到功能落地的完整过程。熟悉前后端开发流程，并持续关注 <span class="interactive-word" data-note="关注 Dify、RAG、工作流和 AI 辅助开发在业务里的真实用法。">AI 工具</span>在业务场景中的应用。</p>
-                    <p>关注 <span class="interactive-word" data-note="把 AI 能力接进具体流程，而不是只停在演示效果。">AI 应用开发</span>、全栈工程师与产品相关方向，擅长将业务需求整理为清晰的文档、流程和可执行方案，推动想法从问题定义走向<span class="interactive-word" data-note="用可运行页面、清晰文档和可复用流程把事情交到别人手里。">实际交付</span>。</p>
-                    <div class="about-notes">
-                        <span>需求文档</span>
-                        <span>业务逻辑梳理</span>
-                        <span>客户沟通</span>
-                        <span>PPT 表达</span>
-                        <span>AI 方向接轨中</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ============================================
          PROJECTS
          ============================================ -->
     <section class="section projects" id="projects">
         <div class="container">
-            <p class="section-label">Chapter 02 / Project Board</p>
+            <p class="section-label">Chapter 01 / Project Board</p>
             <h2 class="section-title">Projects</h2>
             <div class="projects-grid">
                 <article class="project-card" data-cursor>
@@ -192,7 +188,7 @@
          ============================================ -->
     <section class="section skills" id="skills">
         <div class="container">
-            <p class="section-label">Chapter 03 / Tool Shelf</p>
+            <p class="section-label">Chapter 02 / Tool Shelf</p>
             <h2 class="section-title">Skills</h2>
             <div class="skills-filter" role="group" aria-label="筛选技能分类">
                 <button class="skills-filter-btn active" type="button" data-skill-filter="all">全部</button>
@@ -240,7 +236,7 @@
          ============================================ -->
     <section class="section contact" id="contact">
         <div class="contact-inner">
-            <p class="section-label">Chapter 04 / Contact</p>
+            <p class="section-label">Chapter 03 / Contact</p>
             <h2 class="contact-title">Let's Talk</h2>
             <p class="contact-subtitle">有项目、有想法，或者只是想交换一下灵感，都可以来找我。</p>
 
@@ -307,7 +303,10 @@
 <!-- Screenshot Lightbox -->
 <div class="screenshot-lightbox" id="screenshotLightbox" aria-hidden="true">
     <button class="screenshot-lightbox-close" aria-label="Close screenshot">&times;</button>
+    <button class="screenshot-lightbox-btn screenshot-lightbox-prev" type="button" aria-label="上一张截图">&lsaquo;</button>
     <img class="screenshot-lightbox-img" alt="">
+    <button class="screenshot-lightbox-btn screenshot-lightbox-next" type="button" aria-label="下一张截图">&rsaquo;</button>
+    <p class="screenshot-lightbox-count" aria-live="polite"></p>
 </div>
 
 <!-- Hidden Terminal -->

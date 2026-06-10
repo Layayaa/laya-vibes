@@ -180,6 +180,12 @@ class ScreenshotLightbox {
         if (!this.lightbox) return;
         this.image = this.lightbox.querySelector('.screenshot-lightbox-img');
         this.closeButton = this.lightbox.querySelector('.screenshot-lightbox-close');
+        this.previousButton = this.lightbox.querySelector('.screenshot-lightbox-prev');
+        this.nextButton = this.lightbox.querySelector('.screenshot-lightbox-next');
+        this.counter = this.lightbox.querySelector('.screenshot-lightbox-count');
+        this.activeImages = [];
+        this.activeAlts = [];
+        this.activeImageIndex = 0;
         this.init();
     }
 
@@ -207,28 +213,67 @@ class ScreenshotLightbox {
         }, true);
 
         this.closeButton.addEventListener('click', () => this.close());
+        this.previousButton.addEventListener('click', () => this.shiftImage(-1));
+        this.nextButton.addEventListener('click', () => this.shiftImage(1));
 
         this.lightbox.addEventListener('click', (event) => {
             if (event.target === this.lightbox) this.close();
         });
 
         document.addEventListener('keydown', (event) => {
-            if (event.key === 'Escape' && this.lightbox.classList.contains('open')) this.close();
+            if (!this.lightbox.classList.contains('open')) return;
+            if (event.key === 'Escape') this.close();
+            if (event.key === 'ArrowLeft') {
+                event.preventDefault();
+                this.shiftImage(-1);
+            }
+            if (event.key === 'ArrowRight') {
+                event.preventDefault();
+                this.shiftImage(1);
+            }
         });
     }
 
     open(sourceImage) {
-        this.image.src = sourceImage.currentSrc || sourceImage.src;
-        this.image.alt = sourceImage.alt;
+        const card = sourceImage.closest('.project-card');
+        const cards = Array.from(document.querySelectorAll('.project-card'));
+        const projectIndex = cards.indexOf(card);
+        const project = projectData[projectIndex];
+        const sourcePath = sourceImage.getAttribute('src');
+
+        this.activeImages = project?.images || [sourcePath];
+        this.activeAlts = project?.imageAlts || [sourceImage.alt];
+        this.activeImageIndex = Math.max(0, this.activeImages.indexOf(sourcePath));
+        this.renderImage();
+
         this.lightbox.classList.add('open');
         this.lightbox.setAttribute('aria-hidden', 'false');
         document.body.style.overflow = 'hidden';
+    }
+
+    shiftImage(direction) {
+        if (this.activeImages.length < 2) return;
+        this.activeImageIndex = (this.activeImageIndex + direction + this.activeImages.length) % this.activeImages.length;
+        this.renderImage();
+    }
+
+    renderImage() {
+        const total = this.activeImages.length;
+        const current = this.activeImageIndex;
+
+        this.image.src = this.activeImages[current];
+        this.image.alt = this.activeAlts[current] || '项目截图';
+        this.counter.textContent = `${current + 1} / ${total}`;
+        this.previousButton.disabled = total < 2;
+        this.nextButton.disabled = total < 2;
     }
 
     close() {
         this.lightbox.classList.remove('open');
         this.lightbox.setAttribute('aria-hidden', 'true');
         this.image.src = '';
+        this.activeImages = [];
+        this.activeAlts = [];
         document.body.style.overflow = '';
     }
 }
