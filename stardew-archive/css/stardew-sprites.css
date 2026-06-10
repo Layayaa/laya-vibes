@@ -1,0 +1,461 @@
+/* Game assets from Stardew Valley by ConcernedApe. */
+
+:root {
+  --sprite-cursors: url("../assets/sprites/Cursors.png");
+  --sprite-objects: url("../assets/sprites/springobjects.png");
+  --sprite-craftables: url("../assets/sprites/Craftables.png");
+  --sprite-tools: url("../assets/sprites/tools.png");
+  --sprite-weapons: url("../assets/sprites/weapons.png");
+  --sprite-menu: url("../assets/sprites/MenuTiles.png");
+  --sprite-textbox: url("../assets/sprites/textBox.png");
+  --sprite-letter: url("../assets/sprites/letterBG.png");
+  --sprite-billboard: url("../assets/sprites/Billboard.png");
+  --sprite-day: url("../assets/sprites/daybg.png");
+  --sprite-night: url("../assets/sprites/nightbg.png");
+  --sprite-panorama: url("../assets/sprites/stardewPanorama.png");
+  --wallpaper-farm: url("../assets/stardew/farm-desktop.jpg");
+  --icon-computer: url("../assets/icons/diamond.png");
+  --icon-projects: url("../assets/icons/billboard.png");
+  --icon-terminal: url("../assets/icons/terminal-device.png");
+  --icon-about: url("../assets/icons/scroll.png");
+  --icon-browser: url("../assets/icons/fishing-rod.png");
+  --icon-contact: url("../assets/icons/wiki/mail.png");
+  --icon-skills: url("../assets/icons/sword.png");
+  --icon-settings: url("../assets/icons/pickaxe.png");
+  --icon-recycle: url("../assets/icons/wiki/garbage-can.png");
+  --icon-shipping: url("../assets/icons/wiki/shipping-bin.png");
+  --icon-tv: url("../assets/icons/wiki/floor-tv.png");
+  --icon-sleep: url("../assets/icons/sleep.png");
+}
+
+body,
+button,
+input {
+  -webkit-font-smoothing: none;
+  font-smooth: never;
+}
+
+.desktop {
+  background: #2d7d4f;
+}
+
+.wallpaper {
+  image-rendering: pixelated;
+  background-color: #76b7e8;
+  background-image: linear-gradient(90deg, rgba(244, 228, 193, .38) 0 156px, rgba(244, 228, 193, .18) 156px 230px, transparent 360px), var(--sprite-panorama);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  contain: paint;
+}
+
+[data-time="dusk"] .wallpaper {
+  background-color: #d38b55;
+  background-image: linear-gradient(90deg, rgba(91, 48, 24, .36) 0 156px, rgba(91, 48, 24, .16) 156px 230px, rgba(191, 89, 46, .24) 100%), var(--sprite-panorama);
+}
+
+[data-time="night"] .wallpaper {
+  background-color: #111827;
+  background-image: linear-gradient(90deg, rgba(19, 13, 8, .58) 0 156px, rgba(19, 13, 8, .24) 156px 230px, rgba(8, 12, 26, .54) 100%), var(--sprite-panorama);
+}
+
+.pixel-sky,
+.pixel-hills,
+.pixel-grass,
+.pixel-tree,
+.farm-cloud,
+.stardew-scene {
+  display: none !important;
+}
+
+/* ===== Desktop sprites ===== */
+.desktop-icon span,
+.menu-icon {
+  background-color: transparent;
+  border: 0;
+  box-shadow: none;
+  image-rendering: pixelated;
+}
+
+.desktop-icon span {
+  width: 44px;
+  height: 44px;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.menu-icon {
+  width: 22px;
+  height: 22px;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.app-icon-computer {
+  background-image: var(--icon-computer);
+}
+
+.app-icon-about {
+  background-image: var(--icon-about);
+}
+
+.app-icon-projects {
+  background-image: var(--icon-projects);
+}
+
+.app-icon-terminal {
+  background-image: var(--icon-terminal);
+}
+
+.app-icon-shipping {
+  background-image: var(--icon-shipping);
+}
+
+.app-icon-browser {
+  background-image: var(--icon-tv);
+}
+
+.app-icon-settings {
+  background-image: var(--icon-settings);
+}
+
+.app-icon-skills {
+  background-image: var(--icon-skills);
+}
+
+.app-icon-contact {
+  background-image: var(--icon-contact);
+}
+
+.app-icon-recycle {
+  background-image: var(--icon-recycle);
+}
+
+.app-icon-sleep {
+  background-image: var(--icon-sleep);
+}
+
+.desktop-icon:hover span,
+.desktop-icon:active span {
+  transform: none;
+  background-color: transparent;
+}
+
+.desktop-icon {
+  text-shadow: 1px 1px 0 #f4e4c1;
+}
+
+.desktop-icons {
+  top: 14px;
+  left: 14px;
+  width: 126px;
+  gap: 7px;
+  padding: 8px 6px 10px;
+  background: rgba(244, 228, 193, .42);
+  border: 3px solid rgba(90, 58, 26, .72);
+  box-shadow: 3px 3px 0 rgba(43, 29, 14, .65);
+  backdrop-filter: none;
+}
+
+/* ===== Stardew UI surfaces ===== */
+.window,
+.pixel-dialog-panel,
+.level-up-panel,
+.app-card,
+.settings-option,
+.recycle-item,
+.skill-row {
+  border: 16px solid transparent;
+  border-image: var(--sprite-menu) 16 fill round;
+  background: #f4e4c1;
+  box-shadow: 4px 4px 0 #2b1d0e;
+}
+
+.start-menu {
+  left: 12px;
+  bottom: 66px;
+  width: 230px;
+  max-height: calc(100vh - 96px);
+  padding: 8px;
+  overflow: auto;
+  background: #f4e4c1;
+  border: 4px solid #8b6914;
+  box-shadow: inset 2px 2px 0 #fff2c5, inset -2px -2px 0 #9b6a2f, 4px 4px 0 #2b1d0e;
+}
+
+.start-menu button {
+  height: 34px;
+  padding: 4px 8px;
+  gap: 8px;
+  color: #2b1d0e;
+  background: transparent;
+  border: 0;
+  border-bottom: 2px solid rgba(139, 105, 20, .28);
+  box-shadow: none;
+  font-size: 9px;
+  line-height: 1;
+}
+
+.start-menu button:last-child {
+  border-bottom: 0;
+}
+
+.start-menu button:hover,
+.start-menu button:focus-visible {
+  color: #f4e4c1;
+  background: #8b6914;
+  outline: 0;
+}
+
+.start-menu .menu-icon {
+  width: 24px;
+  height: 24px;
+}
+
+.window-titlebar {
+  background: #8b6914;
+  border-bottom: 3px solid #5a3a1a;
+}
+
+.window-body {
+  background: #f4e4c1;
+}
+
+.npc-dialog-box {
+  border: 0;
+  background-image: var(--sprite-textbox);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-color: transparent;
+  image-rendering: pixelated;
+  box-shadow: none;
+}
+
+.npc-dialog-name {
+  background: #f4e4c1;
+  border: 3px solid #5a3a1a;
+}
+
+.quest-board {
+  background-image: var(--sprite-billboard);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  padding: 54px 42px 34px;
+  image-rendering: pixelated;
+}
+
+.quest-board-title {
+  color: #2b1d0e;
+  text-shadow: none;
+}
+
+.quest-note {
+  background: #f5dc9d;
+  border: 3px solid #8b6914;
+  box-shadow: 3px 3px 0 #5a3a1a;
+}
+
+.mailbox-letter-open,
+.mailbox-envelope,
+.mailbox-code {
+  background-image: var(--sprite-letter);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  border: 0;
+  box-shadow: none;
+  image-rendering: pixelated;
+}
+
+.taskbar {
+  background: #6b4f12;
+  border-top: 0;
+  box-shadow: 0 -4px 0 #2b1d0e;
+}
+
+.task-item,
+.start-button,
+.action-btn {
+  border: 12px solid transparent;
+  border-image: var(--sprite-menu) 12 fill round;
+  background: #f4e4c1;
+  color: #2b1d0e;
+  box-shadow: none;
+}
+
+.start-button {
+  min-width: 78px;
+  height: 38px;
+  padding: 0 12px;
+  border: 3px solid #4a3010;
+  border-image: none;
+  background-color: #c47f3a;
+  background-image: none !important;
+  color: #2b1d0e;
+  box-shadow: inset 2px 2px 0 #e8b15c, inset -2px -2px 0 #7a4a18, 2px 2px 0 #2b1d0e;
+  font-size: 9px;
+  line-height: 1;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.start-button:hover,
+.start-button:focus-visible {
+  background-color: #d89040;
+  outline: 0;
+}
+
+.start-button:active {
+  box-shadow: inset -1px -1px 0 #e8b15c, inset 2px 2px 0 #7a4a18;
+  transform: translate(1px, 1px);
+}
+
+.task-item {
+  position: relative;
+  max-width: 150px;
+  height: 34px;
+  padding: 0 10px 0 26px;
+  border: 3px solid #8b6914;
+  border-image: none;
+  background-color: #f4e4c1;
+  background-image: none !important;
+  box-shadow: inset 1px 1px 0 #fff2c5, inset -1px -1px 0 #9b6a2f;
+  color: #2b1d0e;
+  font-size: 8px;
+  line-height: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-start;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.task-item::before {
+  content: "";
+  position: absolute;
+  left: 8px;
+  top: 50%;
+  width: 10px;
+  height: 10px;
+  transform: translateY(-50%);
+  background: #38b764;
+  border: 2px solid #5a3a1a;
+  box-shadow: 1px 1px 0 #2b1d0e;
+}
+
+.task-item[data-minimized="true"] {
+  background: #c8b98c;
+  color: #6b4f12;
+}
+
+.task-buttons .task-item,
+.task-buttons .task-item * {
+  image-rendering: pixelated;
+  background-repeat: no-repeat;
+}
+
+.tray {
+  flex: 0 0 auto;
+  height: 40px;
+  margin-left: auto;
+  padding: 4px 8px;
+  gap: 8px;
+  color: #2b1d0e;
+  background: #f4e4c1;
+  border: 4px solid #8b6914;
+  box-shadow: inset 2px 2px 0 #fff2c5, inset -2px -2px 0 #9b6a2f, 3px 3px 0 #2b1d0e;
+}
+
+.task-buttons {
+  min-width: 0;
+}
+
+.tray-stat {
+  height: 24px;
+  gap: 4px;
+  padding: 0 3px;
+}
+
+.hp-bar,
+.energy-bar,
+.time-progress {
+  display: inline-block;
+  width: 48px;
+  height: 8px;
+  padding: 0;
+  border: 2px solid #5a3a1a;
+  background: #2b1d0e;
+  box-shadow: inset 1px 1px 0 rgba(255,255,255,.15);
+  overflow: hidden;
+}
+
+.time-progress {
+  width: 54px;
+  height: 6px;
+}
+
+.hp-bar-fill,
+.energy-bar-fill,
+.time-progress-fill {
+  display: block;
+  height: 100%;
+  image-rendering: pixelated;
+}
+
+.hp-bar-fill {
+  background: #38b764;
+}
+
+.energy-bar-fill {
+  background: #ffcd75;
+}
+
+.time-progress-fill {
+  background: #fbf236;
+}
+
+.tray-gold {
+  color: #6b4f12;
+  text-shadow: 1px 1px 0 #fff2c5;
+}
+
+#clock,
+#date,
+#season-icon {
+  color: #2b1d0e;
+  text-shadow: 1px 1px 0 #fff2c5;
+}
+
+#clock {
+  min-width: 44px;
+}
+
+#date {
+  opacity: .82;
+}
+
+@media (max-width: 1100px) {
+  #date {
+    display: none;
+  }
+  .tray {
+    gap: 5px;
+    padding-inline: 6px;
+  }
+}
+
+.day-night-overlay,
+.desktop-glow,
+.petal-container,
+.snow-layer {
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .night-stars,
+  .snowflake,
+  .petal {
+    animation: none !important;
+  }
+}

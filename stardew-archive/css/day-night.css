@@ -1,0 +1,74 @@
+/* ===== Day/Night Cycle Overlay ===== */
+.day-night-overlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 2;
+  transition: background .6s steps(1);
+}
+
+/* Daytime: no overlay */
+[data-time="day"] .day-night-overlay {
+  background: transparent;
+}
+
+/* Dusk: warm orange gradient */
+[data-time="dusk"] .day-night-overlay {
+  background: linear-gradient(180deg, rgba(220,120,40,.25) 0%, rgba(180,80,20,.15) 50%, transparent 100%);
+}
+
+/* Night: dark blue overlay */
+[data-time="night"] .day-night-overlay {
+  background: linear-gradient(180deg, rgba(10,15,40,.55) 0%, rgba(15,20,50,.45) 40%, rgba(20,25,40,.25) 100%);
+}
+
+/* Pixel stars (CSS-generated, visible at night) */
+[data-time="night"] .night-stars {
+  display: block;
+}
+
+.night-stars {
+  display: none;
+  position: absolute;
+  inset: 0 0 55% 0;
+  background:
+    radial-gradient(2px 2px at 10% 15%, #fff 0, transparent 100%),
+    radial-gradient(2px 2px at 25% 8%, #fff 0, transparent 100%),
+    radial-gradient(1px 1px at 35% 22%, #fff 0, transparent 100%),
+    radial-gradient(2px 2px at 48% 12%, #fff 0, transparent 100%),
+    radial-gradient(1px 1px at 55% 25%, #fff 0, transparent 100%),
+    radial-gradient(2px 2px at 62% 6%, #fff 0, transparent 100%),
+    radial-gradient(1px 1px at 70% 18%, #fff 0, transparent 100%),
+    radial-gradient(2px 2px at 78% 10%, #fff 0, transparent 100%),
+    radial-gradient(1px 1px at 85% 20%, #fff 0, transparent 100%),
+    radial-gradient(2px 2px at 92% 14%, #fff 0, transparent 100%),
+    radial-gradient(1px 1px at 15% 30%, #fff 0, transparent 100%),
+    radial-gradient(2px 2px at 42% 28%, #fff 0, transparent 100%),
+    radial-gradient(1px 1px at 68% 32%, #fff 0, transparent 100%);
+  animation: starTwinkle 3s steps(1) infinite;
+  pointer-events: none;
+}
+
+@keyframes starTwinkle {
+  0%, 40% { opacity: .9; }
+  41%, 70% { opacity: .5; }
+  71%, 100% { opacity: .85; }
+}
+
+/* Time progress bar in taskbar */
+.time-progress {
+  width: 52px;
+  height: 4px;
+  border: 1px solid #4a3010;
+  background: #2b1d0e;
+  border-radius: 0;
+  overflow: hidden;
+}
+
+.time-progress-fill {
+  display: block;
+  height: 100%;
+  width: 50%;
+  background: #fbf236;
+  transition: width 60s linear;
+}

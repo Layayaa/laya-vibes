@@ -1,0 +1,109 @@
+/* ===== Seasonal Theme Variations ===== */
+
+/* Spring theme (Mar-May) */
+[data-season="spring"] {
+  --taskbar-bg: #6b4f12;
+  --taskbar-border: #a07830;
+}
+
+/* Summer theme (Jun-Aug) */
+[data-season="summer"] {
+  --taskbar-bg: #5a6b1e;
+  --taskbar-border: #8a9b50;
+}
+
+[data-season="summer"] .taskbar {
+  border-top-color: #8a9b50;
+}
+
+[data-season="summer"] .start-button {
+  background: #e0a030;
+}
+
+[data-season="summer"] .window-titlebar {
+  background: linear-gradient(180deg, #90b040 0%, #6b8a20 40%, #4a6a10 100%);
+}
+
+/* Autumn theme (Sep-Nov) */
+[data-season="autumn"] {
+  --taskbar-bg: #8b5a14;
+  --taskbar-border: #b08030;
+}
+
+[data-season="autumn"] .taskbar {
+  border-top-color: #b08030;
+}
+
+[data-season="autumn"] .start-button,
+[data-season="autumn"] .task-item {
+  background: #d08020;
+}
+
+[data-season="autumn"] .window-titlebar {
+  background: linear-gradient(180deg, #c08030 0%, #a06020 40%, #805010 100%);
+}
+
+/* Winter theme (Dec-Feb) */
+[data-season="winter"] {
+  --taskbar-bg: #6b8a9b;
+  --taskbar-border: #9bb0c0;
+}
+
+[data-season="winter"] .taskbar {
+  border-top-color: #9bb0c0;
+}
+
+[data-season="winter"] .start-button {
+  background: #80a0b0;
+}
+
+[data-season="winter"] .window-titlebar {
+  background: linear-gradient(180deg, #90b0c0 0%, #7090a0 40%, #507080 100%);
+}
+
+/* Winter: mute trees */
+[data-season="winter"] .pixel-tree::after {
+  background: #c8dce8;
+  border-color: #b0c8d8;
+  box-shadow:
+    inset 8px -4px 0 #d8e8f0,
+    inset -6px -8px 0 #b8d0e0;
+}
+
+/* Summer: brighter grass */
+[data-season="summer"] .pixel-grass {
+  background: linear-gradient(180deg, #3d8a4e 0%, #2d7d4f 20%, #1e5e35 100%);
+}
+
+/* Autumn: warm tones */
+[data-season="autumn"] .pixel-grass {
+  background: linear-gradient(180deg, #c47f3a 0%, #a8682a 20%, #8b5018 100%);
+}
+[data-season="autumn"] .pixel-hills {
+  background:
+    radial-gradient(ellipse 320px 120px at 15% 100%, #d89040 0, #c87830 40%, transparent 70%),
+    radial-gradient(ellipse 280px 100px at 45% 100%, #c87830 0, #b86828 40%, transparent 70%),
+    radial-gradient(ellipse 340px 110px at 78% 100%, #d89040 0, #c87830 40%, transparent 70%),
+    radial-gradient(ellipse 380px 140px at 30% 110%, #c47f3a 0, #b06828 50%, transparent 75%),
+    radial-gradient(ellipse 400px 130px at 70% 110%, #c47f3a 0, #b06828 50%, transparent 75%);
+}
+[data-season="autumn"] .pixel-tree::after {
+  background: #d87830;
+  border-color: #b85820;
+  box-shadow:
+    inset 8px -4px 0 #e89840,
+    inset -6px -8px 0 #c06020;
+}
+
+/* Winter: white landscape */
+[data-season="winter"] .pixel-grass {
+  background: linear-gradient(180deg, #e8e8e8 0%, #d8dce0 20%, #c8d0d8 100%);
+}
+[data-season="winter"] .pixel-hills {
+  background:
+    radial-gradient(ellipse 320px 120px at 15% 100%, #d8dce0 0, #c8d0d8 40%, transparent 70%),
+    radial-gradient(ellipse 280px 100px at 45% 100%, #d0d4d8 0, #c0c8d0 40%, transparent 70%),
+    radial-gradient(ellipse 340px 110px at 78% 100%, #d8dce0 0, #c8d0d8 40%, transparent 70%),
+    radial-gradient(ellipse 380px 140px at 30% 110%, #d0d8e0 0, #c0c8d0 50%, transparent 75%),
+    radial-gradient(ellipse 400px 130px at 70% 110%, #d0d8e0 0, #c0c8d0 50%, transparent 75%);
+}

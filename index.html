@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laya | Personal Archive</title>
+    <meta name="description" content="Laya 的个人网站：全栈开发、产品思维、AI 开发、项目档案和一点自己的审美。">
+    <meta property="og:title" content="Laya | Personal Archive">
+    <meta property="og:description" content="把想法做成可用产品，也把过程认真留档。">
+    <meta property="og:type" content="website">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text y='28' font-size='28'>⚡</text></svg>">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="css/variables.css">
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/cursor.css">
+    <link rel="stylesheet" href="css/nav.css">
+    <link rel="stylesheet" href="css/hero.css">
+    <link rel="stylesheet" href="css/about.css">
+    <link rel="stylesheet" href="css/projects.css">
+    <link rel="stylesheet" href="css/skills.css">
+    <link rel="stylesheet" href="css/contact.css">
+    <link rel="stylesheet" href="css/animations.css">
+
+    <!-- GSAP -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+
+    <!-- Lenis -->
+    <script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js" defer></script>
+</head>
+<body>
+
+<!-- Loading Bar -->
+<div class="loading-bar"></div>
+<div class="scroll-progress" aria-hidden="true"></div>
+
+<!-- Navigation -->
+<nav class="nav" aria-label="Section navigation">
+    <div class="nav-dot active" data-section="hero">
+        <span class="nav-tooltip">Home</span>
+    </div>
+    <div class="nav-dot" data-section="about">
+        <span class="nav-tooltip">About</span>
+    </div>
+    <div class="nav-dot" data-section="projects">
+        <span class="nav-tooltip">Projects</span>
+    </div>
+    <div class="nav-dot" data-section="skills">
+        <span class="nav-tooltip">Skills</span>
+    </div>
+    <div class="nav-dot" data-section="contact">
+        <span class="nav-tooltip">Contact</span>
+    </div>
+    <button class="nav-theme-toggle" aria-label="Toggle theme" title="Toggle dark/light mode">☀</button>
+</nav>
+
+<main>
+    <!-- ============================================
+         HERO
+         ============================================ -->
+    <section class="section hero" id="hero">
+        <canvas class="hero-canvas" id="heroCanvas"></canvas>
+        <div class="hero-content">
+            <p class="hero-kicker">Personal archive / product-minded developer</p>
+            <div class="hero-nameplate">
+                <span class="hero-pin"></span>
+                <h1 class="hero-name">
+                    <span class="hero-letter">L</span><span class="hero-letter">A</span><span class="hero-letter">Y</span><span class="hero-letter">A</span>
+                </h1>
+                <p class="hero-subtitle">会做 PPT、会聊客户、也能把想法写成能跑起来的代码。</p>
+            </div>
+            <div class="hero-stickers" aria-hidden="true">
+                <span class="hero-sticker hero-sticker-code">full-stack</span>
+                <span class="hero-sticker hero-sticker-product">product sense</span>
+                <span class="hero-sticker hero-sticker-note">vibe coding</span>
+            </div>
+        </div>
+        <p class="hero-location">Chengdu, China / currently building quietly</p>
+        <p class="hero-scroll">turn the page</p>
+    </section>
+
+    <!-- ============================================
+         ABOUT
+         ============================================ -->
+    <section class="section about" id="about">
+        <div class="container">
+            <p class="section-label">Chapter 01 / About Me</p>
+            <div class="about-grid">
+                <div class="about-avatar-wrap">
+                    <div class="about-avatar-frame">
+                        <div class="about-avatar-decor"></div>
+                        <img src="个人插画.png" alt="Laya 的个人插画头像" class="about-avatar" loading="eager">
+                    </div>
+                    <div class="about-tags">
+                        <span class="about-tag">全栈开发</span>
+                        <span class="about-tag">产品思维</span>
+                        <span class="about-tag">Vibe Coding</span>
+                        <span class="about-tag">粤菜爱好者</span>
+                    </div>
+                </div>
+                <div class="about-text">
+                    <p class="about-lede">我想成为一个靠谱的人：能把需求讲清楚，也能把东西做出来。</p>
+                    <p>具备<span class="interactive-word" data-note="能同时理解页面、接口、数据和部署，把想法拆成能落地的功能。">全栈开发</span>、<span class="interactive-word" data-note="会先问清楚目标、用户、流程和边界，再决定怎么做。">产品理解</span>与<span class="interactive-word" data-note="把客户说的模糊需求整理成清楚的问题、选择和下一步。">客户沟通</span>经验，能够参与从<span class="interactive-word" data-note="梳理角色、状态、异常情况和交付范围，让开发前的问题尽量暴露。">需求梳理</span>、方案表达到功能落地的完整过程。熟悉前后端开发流程，并持续关注 <span class="interactive-word" data-note="关注 Dify、RAG、工作流和 AI 辅助开发在业务里的真实用法。">AI 工具</span>在业务场景中的应用。</p>
+                    <p>关注 <span class="interactive-word" data-note="把 AI 能力接进具体流程，而不是只停在演示效果。">AI 应用开发</span>、全栈工程师与产品相关方向，擅长将业务需求整理为清晰的文档、流程和可执行方案，推动想法从问题定义走向<span class="interactive-word" data-note="用可运行页面、清晰文档和可复用流程把事情交到别人手里。">实际交付</span>。</p>
+                    <div class="about-notes">
+                        <span>需求文档</span>
+                        <span>业务逻辑梳理</span>
+                        <span>客户沟通</span>
+                        <span>PPT 表达</span>
+                        <span>AI 方向接轨中</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         PROJECTS
+         ============================================ -->
+    <section class="section projects" id="projects">
+        <div class="container">
+            <p class="section-label">Chapter 02 / Project Board</p>
+            <h2 class="section-title">Projects</h2>
+            <div class="projects-grid">
+                <article class="project-card" data-cursor>
+                    <p class="project-card-index">case 01</p>
+                    <h3 class="project-card-name">工程材料询价系统</h3>
+                    <div class="project-card-visual" aria-label="工程材料询价系统截图拼贴">
+                        <img src="项目截图/微信图片_20260604105241_752_152.png" alt="询价系统智能查询界面">
+                        <img src="项目截图/微信图片_20260604105241_753_152.png" alt="询价系统条件筛选界面">
+                        <img src="项目截图/微信图片_20260604105241_754_152.png" alt="询价系统统计分析界面">
+                    </div>
+                    <p class="project-card-desc">企业内部历史询价复用系统，包含智能查询、条件筛选、文件上传、统计分析、用户管理等模块。</p>
+                    <div class="project-card-tags">
+                        <span class="project-card-tag">React</span>
+                        <span class="project-card-tag">TypeScript</span>
+                        <span class="project-card-tag">Django</span>
+                        <span class="project-card-tag">MySQL</span>
+                        <span class="project-card-tag">Docker</span>
+                    </div>
+                    <span class="project-card-link">open case</span>
+                </article>
+
+                <article class="project-card" data-cursor>
+                    <p class="project-card-index">case 02</p>
+                    <h3 class="project-card-name">AI 实习推荐系统</h3>
+                    <div class="project-card-visual" aria-label="AI 实习推荐系统截图拼贴">
+                        <img src="项目截图/微信图片_20260604110348_755_152.png" alt="AI 实习推荐系统简历分析界面">
+                        <img src="项目截图/微信图片_20260604110348_756_152.png" alt="AI 实习推荐系统岗位推荐界面">
+                        <img src="项目截图/微信图片_20260604110348_757_152.png" alt="AI 实习推荐系统搜索结果界面">
+                    </div>
+                    <p class="project-card-desc">围绕简历分析和岗位推荐做的 AI 应用，支持上传简历、技能标签、岗位检索和推荐结果展示。</p>
+                    <div class="project-card-tags">
+                        <span class="project-card-tag">Python</span>
+                        <span class="project-card-tag">Dify</span>
+                        <span class="project-card-tag">Weaviate</span>
+                        <span class="project-card-tag">Docker</span>
+                    </div>
+                    <span class="project-card-link">open case</span>
+                </article>
+
+                <article class="project-card" data-cursor>
+                    <p class="project-card-index">case 03</p>
+                    <h3 class="project-card-name">旌灵云仓小助手</h3>
+                    <div class="project-card-visual" aria-label="旌灵云仓小助手界面截图拼贴">
+                        <img src="assets/jingling-home.jpg" alt="旌灵云仓小助手首页工作台">
+                        <img src="assets/jingling-booking.jpg" alt="旌灵云仓小助手预约办理界面">
+                        <img src="assets/jingling-profile.jpg" alt="旌灵云仓小助手我的预约界面">
+                    </div>
+                    <p class="project-card-desc">面向德阳 OPC 社区的微信小程序，提供会议空间预约辅助、活动信息浏览、通知提醒与反馈提交等服务。</p>
+                    <div class="project-card-tags">
+                        <span class="project-card-tag">微信小程序</span>
+                        <span class="project-card-tag">JavaScript</span>
+                        <span class="project-card-tag">CloudBase</span>
+                        <span class="project-card-tag">云函数</span>
+                    </div>
+                    <span class="project-card-link">scan code</span>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         SKILLS
+         ============================================ -->
+    <section class="section skills" id="skills">
+        <div class="container">
+            <p class="section-label">Chapter 03 / Tool Shelf</p>
+            <h2 class="section-title">Skills</h2>
+            <div class="skills-filter" role="group" aria-label="筛选技能分类">
+                <button class="skills-filter-btn active" type="button" data-skill-filter="all">全部</button>
+                <button class="skills-filter-btn" type="button" data-skill-filter="tech">技术</button>
+                <button class="skills-filter-btn" type="button" data-skill-filter="product">产品</button>
+                <button class="skills-filter-btn" type="button" data-skill-filter="ai">AI</button>
+                <button class="skills-filter-btn" type="button" data-skill-filter="expression">表达</button>
+            </div>
+            <p class="skills-filter-note" id="skillsFilterNote">一组能把需求、实现和表达串起来的工具。</p>
+            <div class="skills-groups">
+                <div class="skills-group">
+                    <p class="skills-group-label">技术底盘</p>
+                    <div class="skills-tags">
+                        <span class="skill-tag core" data-skill-category="tech" data-tip="主力语言，Spring Boot后端">Java</span>
+                        <span class="skill-tag core" data-skill-category="tech ai" data-tip="脚本 / Dify工作流 / 数据处理">Python</span>
+                    </div>
+                </div>
+                <div class="skills-group">
+                    <p class="skills-group-label">全栈开发</p>
+                    <div class="skills-tags">
+                        <span class="skill-tag core" data-skill-category="tech" data-tip="前端主力，Composition API">Vue 3</span>
+                        <span class="skill-tag core" data-skill-category="tech" data-tip="TypeScript + Hooks">React</span>
+                        <span class="skill-tag secondary" data-skill-category="tech" data-tip="类型安全的前端开发">TypeScript</span>
+                        <span class="skill-tag secondary" data-skill-category="tech" data-tip="实用优先的CSS框架">Tailwind</span>
+                    </div>
+                </div>
+                <div class="skills-group">
+                    <p class="skills-group-label">业务 &amp; AI</p>
+                    <div class="skills-tags">
+                        <span class="skill-tag core" data-skill-category="product expression" data-tip="需求拆解、业务流程和产品逻辑">需求文档</span>
+                        <span class="skill-tag core" data-skill-category="product expression" data-tip="跟客户确认目标、约束和交付边界">客户沟通</span>
+                        <span class="skill-tag core" data-skill-category="ai tech" data-tip="AI 应用、工作流和工具组合">AI 开发</span>
+                        <span class="skill-tag secondary" data-skill-category="expression product" data-tip="表达方案和汇报逻辑">PPT</span>
+                        <span class="skill-tag secondary" data-skill-category="ai tech" data-tip="用 AI 加速编码和验证想法">Vibe Coding</span>
+                        <span class="skill-tag secondary" data-skill-category="tech" data-tip="关系型数据库设计与优化">MySQL</span>
+                        <span class="skill-tag secondary" data-skill-category="tech" data-tip="容器化部署">Docker</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         CONTACT
+         ============================================ -->
+    <section class="section contact" id="contact">
+        <div class="contact-inner">
+            <p class="section-label">Chapter 04 / Contact</p>
+            <h2 class="contact-title">Let's Talk</h2>
+            <p class="contact-subtitle">有项目、有想法，或者只是想交换一下灵感，都可以来找我。</p>
+
+            <div class="contact-methods">
+                <div class="contact-method" data-copy="layaya123456@163.com" data-cursor>
+                    <div class="contact-method-icon">
+                        <img src="https://api.iconify.design/mdi/email-outline.svg?color=%23F5F0E8" alt="Email" width="22" height="22">
+                    </div>
+                    <span class="contact-method-label">Email</span>
+                </div>
+                <div class="contact-method" data-copy="__Laya" data-cursor>
+                    <div class="contact-method-icon">
+                        <img src="https://api.iconify.design/mdi/wechat.svg?color=%23F5F0E8" alt="WeChat" width="22" height="22">
+                    </div>
+                    <span class="contact-method-label">WeChat</span>
+                </div>
+                <a class="contact-method" href="https://github.com/Layayaa" target="_blank" rel="noopener" data-cursor>
+                    <div class="contact-method-icon">
+                        <img src="https://api.iconify.design/simple-icons/github.svg?color=%2300D4FF" alt="GitHub" width="22" height="22">
+                    </div>
+                    <span class="contact-method-label">GitHub</span>
+                </a>
+            </div>
+
+            <a href="mailto:layaya123456@163.com" class="contact-btn" data-cursor>Say Hello</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <p class="footer-tagline">Built like a small archive, updated like a living notebook.</p>
+</main>
+
+<!-- Project Modal -->
+<div class="modal-overlay" id="modalOverlay" aria-hidden="true">
+    <div class="modal-content" role="dialog" aria-modal="true">
+        <button class="modal-close" aria-label="Close modal">&times;</button>
+        <p class="modal-index"></p>
+        <h3 class="modal-title"></h3>
+        <p class="modal-summary"></p>
+        <div class="modal-visuals"></div>
+        <div class="project-card-tags modal-tags"></div>
+        <div class="modal-archive-grid">
+            <div class="modal-archive-block">
+                <p class="modal-block-label">背景</p>
+                <p class="modal-background"></p>
+            </div>
+            <div class="modal-archive-block">
+                <p class="modal-block-label">我的职责</p>
+                <ul class="modal-role"></ul>
+            </div>
+            <div class="modal-archive-block">
+                <p class="modal-block-label">关键功能</p>
+                <ul class="modal-features"></ul>
+            </div>
+            <div class="modal-archive-block">
+                <p class="modal-block-label">亮点</p>
+                <p class="modal-highlight"></p>
+            </div>
+        </div>
+        <a href="#" class="modal-link" target="_blank" rel="noopener">Open Project &rarr;</a>
+    </div>
+</div>
+
+<!-- Screenshot Lightbox -->
+<div class="screenshot-lightbox" id="screenshotLightbox" aria-hidden="true">
+    <button class="screenshot-lightbox-close" aria-label="Close screenshot">&times;</button>
+    <img class="screenshot-lightbox-img" alt="">
+</div>
+
+<!-- Hidden Terminal -->
+<div class="terminal-panel" id="terminalPanel" aria-hidden="true">
+    <div class="terminal-header">
+        <span class="terminal-dot pink"></span>
+        <span class="terminal-dot cyan"></span>
+        <span class="terminal-title">LAYA.exe</span>
+        <button class="terminal-close" aria-label="Close terminal">&times;</button>
+    </div>
+    <div class="terminal-body" id="terminalBody">
+        <p>type <span>help</span> to inspect this archive.</p>
+    </div>
+    <form class="terminal-input-row" id="terminalForm">
+        <label for="terminalInput">></label>
+        <input id="terminalInput" type="text" autocomplete="off" spellcheck="false" aria-label="Terminal command">
+    </form>
+</div>
+
+<!-- Scripts -->
+<script src="js/lenis-init.js" defer></script>
+<script src="js/cursor.js" defer></script>
+<script src="js/hero-canvas.js" defer></script>
+<script src="js/scroll-animations.js" defer></script>
+<script src="js/nav.js" defer></script>
+<script src="js/tilt.js" defer></script>
+<script src="js/clipboard.js" defer></script>
+<script src="js/magnetic.js" defer></script>
+<script src="js/modal.js?v=interactive1" defer></script>
+<script src="js/interactions.js" defer></script>
+<script src="js/main.js?v=interactive1" defer></script>
+
+</body>
+</html>

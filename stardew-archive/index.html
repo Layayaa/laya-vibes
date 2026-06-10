@@ -1,0 +1,199 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Laya | Stardew Desk OS</title>
+  <meta name="description" content="Laya 的星露谷风格像素桌面个人网站——打开像走进了鹈鹕镇的复古电脑。" />
+  <meta property="og:title" content="Laya | Stardew Desk OS" />
+  <meta property="og:description" content="像素桌面OS，装着项目、技能和来自鹈鹕镇的信。" />
+  <link rel="icon" type="image/png" href="assets/icons/prismatic-shard.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Silkscreen:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/desktop.css">
+  <link rel="stylesheet" href="css/window.css">
+  <link rel="stylesheet" href="css/terminal.css">
+  <link rel="stylesheet" href="css/dialog.css">
+  <link rel="stylesheet" href="css/quest-board.css">
+  <link rel="stylesheet" href="css/apps.css">
+  <link rel="stylesheet" href="css/seasonal.css">
+  <link rel="stylesheet" href="css/day-night.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/stardew-sprites.css">
+</head>
+<body>
+  <div id="app">
+    <!-- Boot Screen -->
+    <div id="boot-screen" class="boot-screen active">
+      <div class="boot-logo">Laya</div>
+      <div class="boot-title">Stardew Desk OS</div>
+      <div class="boot-subtitle" id="boot-phrase">Planting seeds...</div>
+      <div class="boot-bar"><span id="boot-progress"></span></div>
+    </div>
+
+    <main id="desktop" class="desktop hidden">
+      <!-- Wallpaper layers -->
+      <div class="wallpaper" id="wallpaper">
+        <div class="pixel-sky"></div>
+        <div class="pixel-hills"></div>
+        <div class="pixel-grass"></div>
+        <div class="pixel-tree pixel-tree-1"></div>
+        <div class="pixel-tree pixel-tree-2"></div>
+        <div class="pixel-tree pixel-tree-3"></div>
+        <div class="farm-cloud farm-cloud-1"></div>
+        <div class="farm-cloud farm-cloud-2"></div>
+        <div class="farm-cloud farm-cloud-3"></div>
+      </div>
+
+      <!-- Day/night overlay -->
+      <div class="day-night-overlay"></div>
+      <div class="night-stars"></div>
+
+      <!-- Seasonal particles -->
+      <div class="petal-container" aria-hidden="true">
+        <div class="petal" style="left:5%;animation-delay:0s;animation-duration:7s;"></div>
+        <div class="petal" style="left:12%;animation-delay:1.2s;animation-duration:8s;"></div>
+        <div class="petal" style="left:22%;animation-delay:2.5s;animation-duration:6.5s;"></div>
+        <div class="petal" style="left:35%;animation-delay:.8s;animation-duration:9s;"></div>
+        <div class="petal" style="left:48%;animation-delay:3s;animation-duration:7.5s;"></div>
+        <div class="petal" style="left:58%;animation-delay:1.8s;animation-duration:8.5s;"></div>
+        <div class="petal" style="left:68%;animation-delay:3.5s;animation-duration:6.8s;"></div>
+        <div class="petal" style="left:78%;animation-delay:.5s;animation-duration:9.2s;"></div>
+        <div class="petal" style="left:88%;animation-delay:2s;animation-duration:7.2s;"></div>
+        <div class="petal" style="left:92%;animation-delay:4s;animation-duration:8.8s;"></div>
+      </div>
+
+      <!-- Snow layer (winter) -->
+      <div class="snow-layer" id="snow-layer">
+        <div class="snowflake" style="left:10%;animation-duration:6s;animation-delay:0s;"></div>
+        <div class="snowflake" style="left:25%;animation-duration:8s;animation-delay:1s;"></div>
+        <div class="snowflake" style="left:40%;animation-duration:7s;animation-delay:2s;"></div>
+        <div class="snowflake" style="left:55%;animation-duration:9s;animation-delay:.5s;"></div>
+        <div class="snowflake" style="left:70%;animation-duration:6.5s;animation-delay:1.5s;"></div>
+        <div class="snowflake" style="left:85%;animation-duration:8.5s;animation-delay:2.5s;"></div>
+        <div class="snowflake" style="left:15%;animation-duration:7.5s;animation-delay:3s;"></div>
+        <div class="snowflake" style="left:50%;animation-duration:5.5s;animation-delay:1.8s;"></div>
+      </div>
+
+      <!-- Stardew cutout scene: real prepared assets, not CSS stand-ins -->
+      <div class="stardew-scene" aria-hidden="true">
+        <div class="stardew-cutout stardew-clock"></div>
+        <div class="stardew-cutout stardew-tree stardew-tree-1"></div>
+        <div class="stardew-cutout stardew-tree stardew-tree-2"></div>
+        <button class="stardew-cutout stardew-animal stardew-chicken" type="button" aria-label="chicken"></button>
+        <button class="stardew-cutout stardew-animal stardew-blue-chicken" type="button" aria-label="blue chicken"></button>
+        <button class="stardew-cutout stardew-animal stardew-cat" type="button" aria-label="cat"></button>
+        <div class="stardew-cutout stardew-crop stardew-corn"></div>
+        <div class="stardew-cutout stardew-crop stardew-sunflower"></div>
+        <div class="stardew-cutout stardew-tool stardew-watering-can"></div>
+        <div class="stardew-cutout stardew-tool stardew-hoe"></div>
+        <div class="stardew-cutout stardew-starfruit"></div>
+      </div>
+
+      <!-- Mysterious note (hidden until triggered) -->
+      <div id="mystery-note" class="mystery-note hidden">
+        <div class="mystery-note-inner">
+          <p>如果你看到了这张纸条，</p>
+          <p>说明你是个细心的人。加分。😉</p>
+          <button class="mystery-note-ok">收到！</button>
+        </div>
+      </div>
+
+      <div class="desktop-glow"></div>
+
+      <!-- Desktop Icons (left column only) -->
+      <section class="desktop-icons" aria-label="桌面图标">
+        <button class="desktop-icon" data-app="computer"><span class="app-icon app-icon-computer"></span><i>我的电脑</i></button>
+        <button class="desktop-icon" data-app="projects"><span class="app-icon app-icon-projects"></span><i>项目委托</i></button>
+        <button class="desktop-icon" data-app="terminal"><span class="app-icon app-icon-terminal"></span><i>终端</i></button>
+        <button class="desktop-icon" data-app="about"><span class="app-icon app-icon-about"></span><i>关于我</i></button>
+        <button class="desktop-icon" data-app="browser"><span class="app-icon app-icon-browser"></span><i>电视</i></button>
+        <button class="desktop-icon" data-app="contact"><span class="app-icon app-icon-contact"></span><i>信箱</i></button>
+        <button class="desktop-icon" data-app="skills"><span class="app-icon app-icon-skills"></span><i>技能树</i></button>
+        <button class="desktop-icon" data-app="settings"><span class="app-icon app-icon-settings"></span><i>设置</i></button>
+        <button class="desktop-icon" data-app="recycle"><span class="app-icon app-icon-recycle"></span><i>垃圾桶</i></button>
+        <button class="desktop-icon" data-app="shipping"><span class="app-icon app-icon-shipping"></span><i>出货箱</i></button>
+      </section>
+
+      <!-- Window layer -->
+      <section id="window-layer" class="window-layer" aria-label="应用窗口层"></section>
+
+      <!-- Taskbar -->
+      <nav class="taskbar" aria-label="任务栏">
+        <button id="start-button" class="start-button">MENU</button>
+        <div id="task-buttons" class="task-buttons"></div>
+        <div class="tray">
+          <span class="tray-stat" title="HP: System running smoothly!">
+            <span style="color:#ac3232;">❤️</span>
+            <span class="hp-bar"><span class="hp-bar-fill"></span></span>
+          </span>
+          <span class="tray-stat" title="Energy: Explorer is energetic!">
+            <span style="color:#ffcd75;">⚡</span>
+            <span class="energy-bar"><span id="energy-fill" class="energy-bar-fill"></span></span>
+          </span>
+          <span class="tray-stat" title="探索进度">
+            <span class="tray-gold">💰 <span id="gold-count">500</span>g</span>
+          </span>
+          <span class="tray-stat day-progress-stat">
+            <span style="font-size:8px;">☀️</span>
+            <span class="time-progress"><span id="time-progress-fill" class="time-progress-fill"></span></span>
+            <span style="font-size:8px;">🌙</span>
+          </span>
+          <span id="clock">00:00</span>
+          <span id="date">2026-05-22</span>
+          <span id="season-icon">🌸</span>
+        </div>
+      </nav>
+
+      <!-- Start Menu -->
+      <aside id="start-menu" class="start-menu hidden" aria-label="开始菜单">
+        <button data-app="about"><span class="menu-icon app-icon app-icon-about"></span>About Me</button>
+        <button data-app="projects"><span class="menu-icon app-icon app-icon-projects"></span>Projects</button>
+        <button data-app="terminal"><span class="menu-icon app-icon app-icon-terminal"></span>Terminal</button>
+        <button data-app="contact"><span class="menu-icon app-icon app-icon-contact"></span>Contact</button>
+        <button data-app="skills"><span class="menu-icon app-icon app-icon-skills"></span>Skills</button>
+        <button data-app="settings"><span class="menu-icon app-icon app-icon-settings"></span>Settings</button>
+        <button id="shutdown-button"><span class="menu-icon app-icon app-icon-sleep"></span>Go to Sleep</button>
+      </aside>
+
+      <!-- Shutdown overlay -->
+      <div id="shutdown-overlay" class="shutdown-overlay hidden">
+        <div class="shutdown-text">正在睡觉... 💤</div>
+        <div class="shutdown-joke">You can't sleep now, there are bugs to fix! 🐛</div>
+      </div>
+    </main>
+  </div>
+
+  <!-- Window template -->
+  <template id="window-template">
+    <article class="window" role="dialog" aria-modal="true">
+      <header class="window-titlebar">
+        <div class="window-title">
+          <span class="window-icon"></span>
+          <span class="window-title-text"></span>
+        </div>
+        <div class="window-controls">
+          <button class="window-btn minimize" aria-label="最小化">_</button>
+          <button class="window-btn maximize" aria-label="最大化">□</button>
+          <button class="window-btn close" aria-label="关闭">×</button>
+        </div>
+      </header>
+      <section class="window-body"></section>
+    </article>
+  </template>
+
+  <script src="js/utils.js"></script>
+  <script src="js/window-manager.js"></script>
+  <script src="js/dialog.js"></script>
+  <script src="js/terminal.js"></script>
+  <script src="js/apps.js"></script>
+  <script src="js/affinity.js"></script>
+  <script src="js/level-up.js"></script>
+  <script src="js/day-night.js"></script>
+  <script src="js/sound.js"></script>
+  <script src="js/boot.js"></script>
+  <script src="js/desktop.js"></script>
+</body>
+</html>

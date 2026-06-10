@@ -1,0 +1,118 @@
+/* ===== Quest Board — Pierre's Task Board Style ===== */
+.quest-board {
+  min-height: 100%;
+  padding: 16px;
+  background:
+    linear-gradient(135deg, #c47f3a, #a06828 30%, #8b5520 60%, #c47f3a),
+    repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,.06) 2px, rgba(0,0,0,.06) 4px);
+  border: 4px solid #6b4f12;
+  box-shadow: inset 0 0 0 2px #d89a4a, 4px 4px 0 #4a3010;
+}
+
+.quest-board-title {
+  margin: 0 0 16px;
+  padding: 8px 14px;
+  background: #f4e4c1;
+  border: 3px solid #6b4f12;
+  color: #2b1d0e;
+  font-family: "Press Start 2P", monospace;
+  font-size: 11px;
+  text-align: center;
+  display: inline-block;
+  box-shadow: 3px 3px 0 #4a3010;
+}
+
+/* Individual quest note pinned to board */
+.quest-note {
+  position: relative;
+  margin-bottom: 14px;
+  padding: 16px 18px;
+  background: #fff8e7;
+  border: 2px solid #c47f3a;
+  box-shadow: 2px 2px 0 #4a3010, 4px 4px 8px rgba(0,0,0,.15);
+  transform: rotate(-.5deg);
+  transition: transform .15s steps(1);
+  -webkit-font-smoothing: none;
+  font-smooth: never;
+}
+
+.quest-note:nth-child(even) {
+  transform: rotate(.8deg);
+}
+
+.quest-note:hover {
+  transform: rotate(0deg) scale(1.02);
+  box-shadow: 3px 3px 0 #4a3010, 5px 5px 12px rgba(0,0,0,.2);
+  z-index: 2;
+}
+
+/* Pushpin */
+.quest-note::before {
+  content: "";
+  position: absolute;
+  top: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 14px;
+  height: 14px;
+  background: radial-gradient(circle at 40% 40%, #ff6666, #ac3232);
+  border: 2px solid #6b4f12;
+  border-radius: 50%;
+  box-shadow: 0 2px 0 #4a3010;
+}
+
+.quest-note-kicker {
+  margin: 0 0 6px;
+  color: #ac3232;
+  font-family: "Press Start 2P", monospace;
+  font-size: 7px;
+}
+
+.quest-note h4 {
+  margin: 0 0 8px;
+  color: #6b4f12;
+  font-size: 13px;
+}
+
+.quest-note p {
+  margin: 0 0 6px;
+  font-size: 11px;
+  line-height: 1.7;
+}
+
+.quest-note-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 10px 0;
+}
+
+.quest-tag {
+  padding: 3px 8px;
+  border: 2px solid #6b4f12;
+  font-size: 8px;
+  color: #2b1d0e;
+  background: #e0c890;
+  box-shadow: 1px 1px 0 #4a3010;
+}
+
+.quest-tag.reward {
+  background: #fbf236;
+  color: #6b4f12;
+}
+
+.quest-tag.status {
+  background: #38b764;
+  color: #f4e4c1;
+}
+
+.quest-note-actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.quest-note-stars {
+  color: #fbf236;
+  font-size: 10px;
+}

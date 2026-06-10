@@ -1,0 +1,27 @@
+/* ===========================================
+   ANIMATIONS — @keyframes
+   =========================================== */
+@keyframes fade-up {
+    from { opacity: 0; transform: translateY(30px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fade-in {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+@keyframes scale-in {
+    from { opacity: 0; transform: scale(0.8); }
+    to   { opacity: 1; transform: scale(1); }
+}
+
+@keyframes stroke-draw {
+    to { stroke-dashoffset: 0; }
+}
+
+/* Utility: hidden before animation triggers */
+.anim-hidden {
+    opacity: 0;
+    visibility: hidden;
+}

@@ -1,0 +1,38 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python3 -c \"from PIL import Image; print\\('Pillow OK'\\)\")",
+      "Bash(python -c \"from PIL import Image; print\\('Pillow OK'\\)\")",
+      "Bash(pip install *)",
+      "Bash(python /d/laya.com/scripts/analyze_images.py)",
+      "Bash(py --version)",
+      "Read(//c/Users/LAYA/AppData/Local/Programs/Python/Python314/**)",
+      "Bash(python3 /d/laya.com/scripts/analyze_images.py)",
+      "Bash(python3 -c \"from PIL import Image; print\\('ok'\\)\")",
+      "Bash(where python3 *)",
+      "Bash(python3 -m pip install Pillow)",
+      "Bash(/c/Users/LAYA/AppData/Local/Programs/Python/Python314/python --version)",
+      "Bash(/c/Users/LAYA/AppData/Local/Programs/Python/Python314/python -c \"from PIL import Image; print\\('Pillow OK'\\)\")",
+      "Bash(/c/Users/LAYA/AppData/Local/Programs/Python/Python314/python /d/laya.com/scripts/extract_sprites.py)",
+      "Bash(/c/Users/LAYA/AppData/Local/Programs/Python/Python314/python /d/laya.com/scripts/cleanup_output.py)",
+      "Bash(/c/Users/LAYA/AppData/Local/Programs/Python/Python314/python /d/laya.com/scripts/make_preview.py)",
+      "Bash(/c/Users/LAYA/AppData/Local/Programs/Python/Python314/python /d/laya.com/scripts/organize_sprites.py)",
+      "Bash(/c/Users/LAYA/AppData/Local/Programs/Python/Python314/python /d/laya.com/scripts/extract_v2.py)",
+      "Bash(/c/Users/LAYA/AppData/Local/Programs/Python/Python314/python /d/laya.com/scripts/extract_v3.py)",
+      "Bash(/c/Users/LAYA/AppData/Local/Programs/Python/Python314/python /d/laya.com/scripts/filter_and_preview.py)",
+      "Bash(/c/Users/LAYA/AppData/Local/Programs/Python/Python314/python /d/laya.com/scripts/extract_final.py)",
+      "Bash(python3 -m http.server 8080)",
+      "Bash(/c/Users/LAYA/AppData/Local/Programs/Python/Python314/python /d/laya.com/scripts/scan_sprites.py)",
+      "Bash(python3 -c \"from PIL import Image; print\\('PIL available'\\)\")",
+      "Bash(python -c \"from PIL import Image; print\\('PIL available'\\)\")",
+      "Bash(pip3 list *)",
+      "Bash(python3 -c \"import importlib; print\\('ok'\\)\")",
+      "Bash(python3 -c \"from PIL import Image; print\\('PIL OK'\\)\")",
+      "Bash(python -c \"from PIL import Image; print\\('ok'\\)\")",
+      "Bash(where python *)",
+      "Bash(pip3 --version)",
+      "Bash(\"/c/Users/LAYA/AppData/Local/Programs/Python/Python314/python.exe\" -c \"from PIL import Image; print\\('PIL OK'\\)\")",
+      "Bash(\"/c/Users/LAYA/AppData/Local/Programs/Python/Python314/python.exe\")"
+    ]
+  }
+}

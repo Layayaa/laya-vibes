@@ -1,0 +1,148 @@
+/* ===== Stardew Window System — Wooden Borders ===== */
+.window-layer {
+  position: absolute;
+  inset: 0 0 58px 0;
+  z-index: 5;
+  pointer-events: none;
+}
+
+.window {
+  position: absolute;
+  min-width: 320px;
+  min-height: 220px;
+  background: #f4e4c1;
+  border: 4px solid #6b4f12;
+  box-shadow:
+    0 0 0 2px #8b6914,
+    6px 6px 0 #2b1d0e;
+  display: flex;
+  flex-direction: column;
+  pointer-events: auto;
+}
+
+.window.maximized {
+  inset: 0 0 58px 0 !important;
+  width: auto !important;
+  height: auto !important;
+  box-shadow: none;
+  border-color: #8b6914;
+}
+
+/* Wood-grain title bar */
+.window-titlebar {
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 6px 0 10px;
+  background:
+    linear-gradient(180deg, #a07830 0%, #8b6914 40%, #6b4f12 100%);
+  color: #f4e4c1;
+  cursor: move;
+  user-select: none;
+  border-bottom: 2px solid #4a3010;
+  text-shadow: 1px 1px 0 #4a3010;
+}
+
+.window-title {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  min-width: 0;
+}
+
+.window-icon {
+  width: 18px;
+  height: 18px;
+  font-size: 14px;
+  display: grid;
+  place-items: center;
+  background: rgba(0,0,0,.2);
+  border: 2px solid #4a3010;
+  flex: 0 0 auto;
+}
+
+.window-title-text {
+  font-size: 10px;
+  line-height: 1.2;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Pixel controls */
+.window-controls {
+  display: flex;
+  gap: 4px;
+}
+
+.window-btn {
+  width: 22px;
+  height: 22px;
+  background: #e0c890;
+  border: 2px solid #4a3010;
+  box-shadow: inset -1px -1px 0 rgba(0,0,0,.2), inset 1px 1px 0 rgba(255,255,255,.5);
+  font-size: 10px;
+  line-height: 1;
+  padding: 0;
+}
+
+.window-btn.delete {
+  background: #e8a890;
+}
+
+.window-btn.close {
+  background: #d87070;
+  color: #fff;
+}
+
+.window-btn:active {
+  transform: translate(1px, 1px);
+  box-shadow: inset 1px 1px 0 rgba(0,0,0,.2), inset -1px -1px 0 rgba(255,255,255,.3);
+}
+
+/* Parchment body */
+.window-body {
+  flex: 1;
+  min-height: 0;
+  overflow: auto;
+  padding: 14px;
+  color: #2b1d0e;
+  background:
+    repeating-linear-gradient(0deg, transparent, transparent 28px, rgba(139,105,20,.04) 28px, rgba(139,105,20,.04) 29px);
+}
+
+.window-body::-webkit-scrollbar {
+  width: 12px;
+}
+
+.window-body::-webkit-scrollbar-track {
+  background: #d4c4a0;
+}
+
+.window-body::-webkit-scrollbar-thumb {
+  background: #8b6914;
+  border: 2px solid #d4c4a0;
+}
+
+.window.dragging {
+  opacity: .94;
+}
+
+.window.deleting {
+  animation: windowDelete .18s steps(1) forwards;
+}
+
+@keyframes windowDelete {
+  0% { transform: scale(1); opacity: 1; }
+  100% { transform: scale(.92); opacity: 0; }
+}
+
+@media (max-width: 1023px) {
+  .window {
+    inset: 10px 10px 74px 10px !important;
+    width: auto !important;
+    height: auto !important;
+    min-width: 0;
+  }
+}

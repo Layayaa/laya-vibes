@@ -1,0 +1,60 @@
+/* ===== Boot Screen — Stardew Valley Style ===== */
+.boot-screen {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: grid;
+  place-items: center;
+  gap: 14px;
+  background: #1a0e04;
+  color: #f4e4c1;
+  text-align: center;
+}
+
+.boot-screen.active { display: grid; }
+.boot-screen.hidden { display: none; }
+
+.boot-logo {
+  font-family: "Press Start 2P", monospace;
+  font-size: 32px;
+  color: #fbf236;
+  text-shadow: 4px 4px 0 #6b4f12;
+}
+
+.boot-title {
+  font-family: "Press Start 2P", monospace;
+  font-size: 14px;
+  color: #c47f3a;
+}
+
+.boot-subtitle {
+  font-size: 13px;
+  color: #e0c890;
+  min-height: 22px;
+}
+
+.boot-bar {
+  width: min(480px, 80vw);
+  height: 20px;
+  border: 3px solid #6b4f12;
+  padding: 3px;
+  box-shadow: 4px 4px 0 #4a3010;
+  background: #2b1d0e;
+}
+
+.boot-bar span {
+  display: block;
+  height: 100%;
+  width: 0%;
+  background: #fbf236;
+}
+
+/* Pixel fade */
+.fade-in {
+  animation: fadeIn .3s steps(1) both;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}

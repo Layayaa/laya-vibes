@@ -1,0 +1,49 @@
+/* ===========================================
+   RESET — Minimal base reset
+   =========================================== */
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+    font-family: var(--font-body);
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    overflow-x: hidden;
+    cursor: none;
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+button {
+    border: none;
+    background: none;
+    cursor: none;
+    font-family: inherit;
+    color: inherit;
+}
+
+ul, ol { list-style: none; }
+
+/* System cursor on touch devices */
+@media (pointer: coarse) {
+    body { cursor: auto; }
+    button, a, [data-cursor] { cursor: pointer; }
+}

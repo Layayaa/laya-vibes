@@ -1,0 +1,55 @@
+/* ===========================================
+   CSS VARIABLES — Personal archive
+   =========================================== */
+:root {
+    --bg: #F6E9D7;
+    --bg-card: #FFF8EB;
+    --paper: #FFF3D8;
+    --paper-deep: #E9D1A8;
+    --text: #2B2118;
+    --text-muted: #7B6752;
+    --pink: #EF476F;
+    --cyan: #2AB7CA;
+    --lime: #F4D35E;
+    --green: #3B8C6E;
+    --blue: #355C9C;
+    --red: #D95D39;
+    --border: #D8B98A;
+    --border-hover: #EF476F;
+
+    --font-display: 'Space Grotesk', sans-serif;
+    --font-body: 'Inter', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+
+    --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+    --ease-out-back: cubic-bezier(0.34, 1.56, 0.64, 1);
+    --ease-elastic: cubic-bezier(0.68, -0.55, 0.27, 1.55);
+
+    color-scheme: light;
+}
+
+[data-theme="light"] {
+    --bg: #F6E9D7;
+    --bg-card: #FFF8EB;
+    --text: #2B2118;
+    --text-muted: #7B6752;
+    --border: #D8B98A;
+}
+
+[data-theme="dark"] {
+    --bg: #130F18;
+    --bg-card: #211729;
+    --paper: #2A2032;
+    --paper-deep: #3C2C49;
+    --text: #FFF4E6;
+    --text-muted: #BCA8C9;
+    --pink: #FF3D8D;
+    --cyan: #30E7FF;
+    --lime: #F9F871;
+    --green: #76F4C4;
+    --blue: #6B72FF;
+    --red: #FF6B4A;
+    --border: #604A70;
+    --border-hover: #30E7FF;
+
+    color-scheme: dark;
+}

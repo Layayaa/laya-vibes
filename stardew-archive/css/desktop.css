@@ -1,0 +1,437 @@
+/* ===== Stardew Valley Desktop OS ===== */
+:root {
+  --wood: #8b6914; --wood-dark: #6b4f12;
+  --parchment: #f4e4c1; --ink: #2b1d0e;
+  --accent: #ef7d57; --green: #38b764;
+  --yellow: #ffcd75; --red: #ac3232; --gold: #fbf236;
+  --taskbar-bg: #6b4f12; --taskbar-border: #a07830;
+}
+
+#app, .desktop { width: 100%; height: 100%; }
+.hidden { display: none !important; }
+
+.desktop {
+  position: relative;
+  overflow: hidden;
+  background: #4a8c5c;
+}
+
+/* ===== Pixel Farm Wallpaper Layers ===== */
+.wallpaper { position: absolute; inset: 0; overflow: hidden; }
+
+.pixel-sky {
+  position: absolute; inset: 0 0 42% 0;
+  background: linear-gradient(180deg, #6bb5d0 0%, #8dcde8 30%, #b8dff0 65%, #d4ecf5 100%);
+}
+
+.pixel-hills {
+  position: absolute; top: 38%; left: 0; right: 0; bottom: 46%;
+  background:
+    radial-gradient(ellipse 320px 120px at 15% 100%, #6aac7a 0, #5a9c6a 40%, transparent 70%),
+    radial-gradient(ellipse 280px 100px at 45% 100%, #5c9668 0, #4c8658 40%, transparent 70%),
+    radial-gradient(ellipse 340px 110px at 78% 100%, #6aac7a 0, #5a9c6a 40%, transparent 70%),
+    radial-gradient(ellipse 380px 140px at 30% 110%, #4a8c5c 0, #3d7a4e 50%, transparent 75%),
+    radial-gradient(ellipse 400px 130px at 70% 110%, #4a8c5c 0, #3d7a4e 50%, transparent 75%);
+}
+
+.pixel-grass {
+  position: absolute; top: 52%; left: 0; right: 0; bottom: 58px;
+  background: linear-gradient(180deg, #4a8c5c 0%, #3d7a4e 20%, #356a3e 100%);
+}
+.pixel-grass::before {
+  content: ""; position: absolute; inset: 0;
+  background:
+    repeating-linear-gradient(90deg, transparent, transparent 4px, rgba(0,0,0,.04) 4px, rgba(0,0,0,.04) 6px),
+    repeating-linear-gradient(0deg, transparent, transparent 8px, rgba(0,0,0,.03) 8px, rgba(0,0,0,.03) 10px);
+}
+.pixel-grass::after {
+  content: ""; position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse 60px 30px at 20% 40%, rgba(0,0,0,.08), transparent),
+    radial-gradient(ellipse 80px 35px at 55% 60%, rgba(0,0,0,.06), transparent),
+    radial-gradient(ellipse 50px 25px at 80% 30%, rgba(0,0,0,.07), transparent);
+}
+
+/* Pixel Trees */
+.pixel-tree { position: absolute; z-index: 1; }
+.pixel-tree::before {
+  content: ""; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%);
+  width: 14px; height: 50px;
+  background: linear-gradient(180deg, #8b5e3c 0%, #6b3f1f 50%, #5a3015 100%);
+  border: 2px solid #4a2010;
+}
+.pixel-tree::after {
+  content: ""; position: absolute; bottom: 40px; left: 50%; transform: translateX(-50%);
+  width: 80px; height: 70px; background: #3d7a4e;
+  border-radius: 50% 50% 45% 45%; border: 3px solid #2d5a38;
+  box-shadow: inset 8px -4px 0 #4a8c5c, inset -6px -8px 0 #356a3e,
+    0 -6px 0 3px #3d7a4e, -10px -10px 0 0 #3d7a4e, 10px -10px 0 0 #3d7a4e;
+}
+.pixel-tree-1 { left: 5%; bottom: calc(58px + 6%); transform: scale(.85); }
+.pixel-tree-2 { right: 8%; bottom: calc(58px + 8%); transform: scale(1); }
+.pixel-tree-3 { left: 38%; bottom: calc(58px + 4%); transform: scale(.65); }
+
+/* Clouds */
+.farm-cloud { position: absolute; background: rgba(255,255,255,.75); z-index: 0; pointer-events: none; }
+.farm-cloud::before, .farm-cloud::after {
+  content: ""; position: absolute; background: inherit; border-radius: 50%;
+}
+.farm-cloud::before { width: 40px; height: 28px; top: -12px; left: 10px; }
+.farm-cloud::after { width: 30px; height: 22px; top: -8px; left: 38px; }
+.farm-cloud-1 { top: 6%; left: 15%; width: 80px; height: 20px; border-radius: 20px; }
+.farm-cloud-2 { top: 10%; left: 55%; width: 65px; height: 16px; border-radius: 16px; }
+.farm-cloud-3 { top: 3%; left: 75%; width: 95px; height: 22px; border-radius: 22px; }
+@keyframes cloudDrift { 0% { transform: translateX(0); } 100% { transform: translateX(-120vw); } }
+
+/* Petals */
+.petal-container { position: absolute; inset: 0; pointer-events: none; z-index: 2; overflow: hidden; }
+.petal {
+  position: absolute; top: -10px; width: 8px; height: 8px;
+  background: #ffb7c5; border-radius: 50% 0 50% 50%;
+  opacity: .45;
+}
+@keyframes petalFall {
+  0%   { transform: translateY(0) rotate(0deg) translateX(0); opacity: .9; }
+  25%  { transform: translateY(25vh) rotate(90deg) translateX(20px); opacity: .8; }
+  50%  { transform: translateY(50vh) rotate(180deg) translateX(-10px); opacity: .6; }
+  75%  { transform: translateY(75vh) rotate(270deg) translateX(15px); opacity: .4; }
+  100% { transform: translateY(105vh) rotate(360deg) translateX(-5px); opacity: 0; }
+}
+
+/* Snow */
+.snow-layer { position: absolute; inset: 0; z-index: 3; pointer-events: none; display: none; overflow: hidden; }
+.snowflake { position: absolute; width: 8px; height: 8px; background: #fff; animation: snowFall linear infinite; }
+@keyframes snowFall { 0% { transform: translateY(-10px) translateX(0); opacity: 1; } 100% { transform: translateY(100vh) translateX(30px); opacity: 0; } }
+
+/* Desktop Glow */
+.desktop-glow { position: absolute; inset: 0; background: linear-gradient(135deg, rgba(239,125,87,.06), transparent 50%, rgba(56,183,100,.04)); pointer-events: none; z-index: 3; }
+
+/* ===== Real Stardew Cutout Scene ===== */
+.stardew-scene {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.stardew-cutout {
+  position: absolute;
+  display: block;
+  border: 0;
+  padding: 0;
+  background-color: transparent;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  image-rendering: pixelated;
+}
+
+.stardew-clock {
+  top: 16px;
+  right: 18px;
+  width: min(220px, 24vw);
+  aspect-ratio: 1.12;
+  background-image: url("../assets/stardew/cutouts/clock-panel.png");
+  opacity: .96;
+}
+
+.stardew-tree-1 {
+  right: -6px;
+  top: 18%;
+  width: 110px;
+  height: 140px;
+  background-image: url("../assets/stardew/cutouts/tall-sprites/tall_542_009.png");
+}
+
+.stardew-tree-2 {
+  right: 54px;
+  top: 38%;
+  width: 78px;
+  height: 100px;
+  background-image: url("../assets/stardew/cutouts/tall-sprites/tall_542_005.png");
+  opacity: .9;
+}
+
+.stardew-animal {
+  pointer-events: auto;
+  cursor: pointer;
+  transition: transform .14s steps(1);
+}
+
+.stardew-animal:hover {
+  transform: translateY(-3px) scale(1.08);
+}
+
+.stardew-chicken {
+  right: 44px;
+  bottom: 84px;
+  width: 78px;
+  aspect-ratio: 1;
+  background-image: url("../assets/stardew/cutouts/chicken.png");
+}
+
+.stardew-blue-chicken {
+  right: 116px;
+  bottom: 84px;
+  width: 76px;
+  aspect-ratio: 1;
+  background-image: url("../assets/stardew/cutouts/blue-chicken.png");
+}
+
+.stardew-cat {
+  left: 144px;
+  bottom: 76px;
+  width: 74px;
+  aspect-ratio: 1;
+  background-image: url("../assets/stardew/cutouts/cat.png");
+}
+
+.stardew-corn {
+  right: 188px;
+  bottom: 76px;
+  width: 72px;
+  aspect-ratio: 1;
+  background-image: url("../assets/stardew/cutouts/corn.png");
+}
+
+.stardew-sunflower {
+  right: 252px;
+  bottom: 76px;
+  width: 82px;
+  aspect-ratio: 1;
+  background-image: url("../assets/stardew/cutouts/sunflower.png");
+}
+
+.stardew-watering-can {
+  right: 324px;
+  bottom: 86px;
+  width: 64px;
+  aspect-ratio: 1;
+  background-image: url("../assets/stardew/cutouts/watering-can.png");
+}
+
+.stardew-hoe {
+  left: 328px;
+  bottom: 84px;
+  width: 66px;
+  aspect-ratio: 1;
+  background-image: url("../assets/stardew/cutouts/hoe.png");
+}
+
+.stardew-starfruit {
+  left: 226px;
+  bottom: 92px;
+  width: 48px;
+  aspect-ratio: 1;
+  background-image: url("../assets/stardew/cutouts/starfruit.png");
+}
+
+/* ===== Desktop Icons ===== */
+.desktop-icons {
+  position: absolute; top: 16px; left: 16px;
+  display: grid; gap: 8px; width: 120px; z-index: 4;
+}
+.desktop-icon {
+  display: grid; justify-items: center; gap: 3px; padding: 5px 3px;
+  color: #2b1d0e; text-shadow: 1px 1px 0 rgba(255,255,255,.4);
+  -webkit-font-smoothing: none; font-smooth: never;
+}
+.desktop-icon:hover span { background-color: rgba(251,242,54,.3); transform: translateY(-1px); }
+.desktop-icon:active span { transform: translateY(0); }
+/* Selected blink */
+.desktop-icon.selected span { animation: iconBlink .6s steps(1) 3; }
+@keyframes iconBlink { 0%,100% { opacity: 1; } 50% { opacity: .5; } }
+
+.desktop-icon span {
+  width: 42px; height: 42px; display: grid; place-items: center;
+  background-color: rgba(255,248,231,.38);
+  background-position: center; background-repeat: no-repeat; background-size: 36px 36px;
+  border: 2px solid #6b4f12; box-shadow: 2px 2px 0 #4a3010;
+  image-rendering: pixelated;
+}
+.app-icon { background-position: center; background-repeat: no-repeat; background-size: contain; image-rendering: pixelated; }
+
+.desktop-icon i {
+  font-style: normal; font-size: 8px; line-height: 1.2;
+  max-width: 88px; word-break: break-word; color: #2b1d0e;
+  -webkit-font-smoothing: none; font-smooth: never;
+}
+
+/* ===== Taskbar ===== */
+.taskbar {
+  position: absolute; left: 0; right: 0; bottom: 0; height: 58px;
+  display: flex; align-items: center; gap: 4px; padding: 6px 10px;
+  background: var(--taskbar-bg); border-top: 3px solid var(--taskbar-border);
+  z-index: 12; box-shadow: 0 -2px 0 #4a3010;
+  -webkit-font-smoothing: none; font-smooth: never;
+}
+.start-button, .task-item, .window-btn, .start-menu button, .boot-bar span { image-rendering: pixelated; }
+
+.start-button {
+  min-width: 56px; padding: 8px 10px; background: #c47f3a; color: #2b1d0e;
+  border: 2px solid #6b4f12;
+  box-shadow: inset -2px -2px 0 rgba(0,0,0,.2), inset 2px 2px 0 rgba(255,255,255,.25), 2px 2px 0 #4a3010;
+  font-size: 9px; font-family: "Press Start 2P", monospace;
+  -webkit-font-smoothing: none; font-smooth: never;
+}
+.start-button:active { box-shadow: inset 2px 2px 0 rgba(0,0,0,.2), inset -2px -2px 0 rgba(255,255,255,.15); }
+
+.task-buttons { flex: 1; display: flex; gap: 3px; min-width: 0; overflow: hidden; }
+.task-item {
+  max-width: 160px; padding: 7px 10px; background: #a07830; color: #f4e4c1;
+  border: 2px solid #4a3010; box-shadow: inset 2px 2px 0 rgba(255,255,255,.12);
+  font-size: 9px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  -webkit-font-smoothing: none; font-smooth: never;
+}
+.task-item[data-minimized="true"] { background: #5a3d14; color: #a09070; }
+
+.tray {
+  display: flex; align-items: center; gap: 6px; padding: 0 6px;
+  color: #f4e4c1; font-size: 9px; white-space: nowrap;
+  -webkit-font-smoothing: none; font-smooth: never;
+}
+.tray-stat { display: flex; align-items: center; gap: 3px; cursor: default; position: relative; }
+.hp-bar, .energy-bar { width: 46px; height: 10px; border: 2px solid #4a3010; background: #2b1d0e; }
+.hp-bar-fill { display: block; height: 100%; width: 100%; background: #38b764; }
+.energy-bar-fill { display: block; height: 100%; width: 75%; background: #ffcd75; transition: width .3s steps(1); }
+.time-progress { width: 46px; height: 6px; border: 1px solid #4a3010; background: #2b1d0e; }
+.time-progress-fill { display: block; height: 100%; width: 50%; background: #fbf236; transition: width 60s linear; }
+.tray-gold { color: #fbf236; text-shadow: 1px 1px 0 #4a3010; }
+
+/* Tooltip */
+.tray-stat[title]:hover::after {
+  content: attr(title); position: absolute; bottom: 100%; left: 50%; transform: translateX(-50%);
+  padding: 5px 8px; background: #2b1d0e; color: #fbf236; font-size: 7px; white-space: nowrap;
+  border: 2px solid #6b4f12; z-index: 30; pointer-events: none;
+  font-family: "Press Start 2P", monospace; -webkit-font-smoothing: none; font-smooth: never;
+}
+
+/* ===== Start Menu ===== */
+.start-menu {
+  position: absolute; left: 10px; bottom: 66px; width: 200px;
+  background: var(--panel); border: 3px solid #6b4f12;
+  box-shadow: 4px 4px 0 #4a3010; z-index: 20;
+}
+.start-menu button {
+  width: 100%; padding: 10px 14px; text-align: left;
+  border-bottom: 2px solid rgba(107,79,18,.3); background: transparent;
+  color: #2b1d0e; font-size: 10px; display: flex; align-items: center; gap: 10px;
+  -webkit-font-smoothing: none; font-smooth: never;
+}
+.start-menu button:hover { background: #c47f3a; color: #f4e4c1; }
+.menu-icon { width: 22px; height: 22px; flex: 0 0 auto; }
+
+/* ===== Shutdown ===== */
+.shutdown-overlay {
+  position: absolute; inset: 0; display: grid; place-items: center;
+  background: #000; color: #f4e4c1; z-index: 30; text-align: center; padding: 20px;
+}
+.shutdown-text { font-family: "Press Start 2P", monospace; font-size: 16px; color: #ffcd75; }
+.shutdown-joke { max-width: 680px; margin-top: 22px; font-size: 13px; line-height: 1.8; }
+
+/* ===== Affinity Toast ===== */
+.affinity-toast {
+  position: absolute; right: 20px; bottom: 110px; padding: 10px 16px;
+  background: #f4e4c1; border: 2px solid #6b4f12; box-shadow: 3px 3px 0 #4a3010;
+  color: #ac3232; font-size: 12px; z-index: 25;
+  animation: toastIn .8s steps(1) forwards, toastOut .8s steps(1) 2s forwards;
+  pointer-events: none;
+}
+@keyframes toastIn { 0% { opacity: 0; transform: translateY(12px); } 100% { opacity: 1; transform: translateY(0); } }
+@keyframes toastOut { 0% { opacity: 1; } 100% { opacity: 0; } }
+
+/* Heart popup */
+.heart-pop {
+  position: absolute; z-index: 26; font-size: 18px;
+  pointer-events: none; animation: heartPop .8s steps(1) forwards;
+}
+@keyframes heartPop {
+  0%   { opacity: 1; transform: translateY(0) scale(1); }
+  50%  { opacity: .8; transform: translateY(-20px) scale(1.3); }
+  100% { opacity: 0; transform: translateY(-40px) scale(.8); }
+}
+
+/* ===== Pixel Dialog (for confirmations) ===== */
+.pixel-dialog {
+  position: absolute; inset: 0; z-index: 40; display: grid; place-items: center;
+  padding: 18px; background: rgba(43,29,14,.35);
+}
+.pixel-dialog-panel {
+  width: min(460px, 92vw); padding: 18px;
+  border: 4px solid #6b4f12; box-shadow: inset 0 0 0 2px #d89a4a, 6px 6px 0 #2b1d0e;
+  background: #f4e4c1; color: #2b1d0e;
+}
+.pixel-dialog-title {
+  margin: 0 0 12px; color: #6b4f12;
+  font-family: "Press Start 2P", monospace; font-size: 11px; line-height: 1.7;
+}
+.pixel-dialog-message { margin: 0 0 16px; font-size: 12px; line-height: 1.9; }
+.pixel-dialog-actions { display: flex; justify-content: flex-end; gap: 8px; flex-wrap: wrap; }
+
+/* ===== Level-Up Popup ===== */
+.level-up-popup {
+  position: absolute; inset: 0; z-index: 45; display: grid; place-items: center;
+  padding: 18px; background: rgba(0,0,0,.55);
+  animation: fadeIn .3s steps(1);
+}
+.level-up-panel {
+  width: min(380px, 85vw); padding: 24px 20px;
+  border: 4px solid #fbf236; box-shadow: inset 0 0 0 3px #c47f3a, 6px 6px 0 #2b1d0e;
+  background: linear-gradient(180deg, #6b4f12, #4a3010);
+  color: #f4e4c1; text-align: center;
+  animation: levelUpPop .4s steps(1);
+}
+@keyframes levelUpPop { 0% { transform: scale(.7); } 60% { transform: scale(1.08); } 100% { transform: scale(1); } }
+.level-up-stars { font-size: 28px; margin-bottom: 10px; }
+.level-up-title { margin: 0 0 8px; font-family: "Press Start 2P", monospace; font-size: 13px; color: #fbf236; }
+.level-up-skill { margin: 0 0 4px; font-size: 12px; }
+.level-up-levels { margin: 0 0 12px; font-size: 16px; color: #ffcd75; font-family: "Press Start 2P", monospace; }
+.level-up-bar { width: 80%; height: 18px; margin: 0 auto 10px; border: 2px solid #4a3010; background: #2b1d0e; }
+.level-up-fill { display: block; height: 100%; width: 100%; background: #fbf236; }
+.level-up-unlock { margin: 0 0 14px; font-size: 10px; color: #38b764; }
+.level-up-ok {
+  padding: 8px 20px; background: #fbf236; color: #2b1d0e;
+  border: 2px solid #c47f3a; font-family: "Press Start 2P", monospace; font-size: 9px; cursor: pointer;
+}
+.level-up-ok:active { transform: translate(1px,1px); }
+
+/* ===== Mysterious Note ===== */
+.mystery-note {
+  position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%);
+  z-index: 35; animation: noteAppear .4s steps(1);
+}
+.mystery-note.hidden { display: none; }
+.mystery-note-inner {
+  padding: 18px 22px; background: #fff8dc; border: 3px dashed #c47f3a;
+  box-shadow: 4px 4px 0 #4a3010; text-align: center;
+  font-family: "Press Start 2P", monospace; font-size: 10px; line-height: 1.9;
+  color: #2b1d0e; -webkit-font-smoothing: none; font-smooth: never;
+}
+.mystery-note-inner p { margin: 0 0 10px; }
+.mystery-note-ok {
+  padding: 6px 16px; background: #fbf236; color: #2b1d0e;
+  border: 2px solid #6b4f12; font-family: inherit; font-size: 8px; cursor: pointer;
+}
+@keyframes noteAppear { 0% { transform: translate(-50%,-50%) scale(0); } 100% { transform: translate(-50%,-50%) scale(1); } }
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+/* ===== Mobile ===== */
+@media (max-width: 767px) {
+  body { overflow: auto; }
+  .desktop { min-height: 100%; }
+  .desktop-icons { position: static; width: auto; grid-template-columns: repeat(2, minmax(0, 1fr)); padding: 16px 16px 84px; gap: 10px; }
+  .taskbar { height: 64px; }
+  .tray { display: none; }
+  .pixel-tree, .farm-cloud, .petal-container, .snow-layer, .night-stars, .stardew-scene { display: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: .001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .001ms !important;
+  }
+}

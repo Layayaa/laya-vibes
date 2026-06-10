@@ -1,0 +1,148 @@
+/* ===== NPC Dialog System — Stardew Valley Style ===== */
+.npc-dialog-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 50;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  pointer-events: none;
+}
+
+.npc-dialog-box {
+  position: relative;
+  margin: 0 20px 20px;
+  padding: 18px 22px 14px;
+  background: linear-gradient(180deg, rgba(43,29,14,.92) 0%, rgba(20,14,8,.94) 100%);
+  border: 4px solid #6b4f12;
+  box-shadow: 0 0 0 2px #8b6914, 4px 4px 0 #2b1d0e;
+  color: #f4e4c1;
+  font-size: 13px;
+  line-height: 2;
+  pointer-events: auto;
+  min-height: 80px;
+  -webkit-font-smoothing: none;
+  font-smooth: never;
+  animation: dialogSlideUp .3s steps(1) both;
+}
+
+@keyframes dialogSlideUp {
+  from { transform: translateY(40px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+/* Portrait on the left side of dialog */
+.npc-dialog-portrait {
+  position: absolute;
+  left: -50px;
+  bottom: 0;
+  width: 56px;
+  height: 64px;
+  background: #f4e4c1;
+  border: 3px solid #6b4f12;
+  image-rendering: pixelated;
+  /* Default placeholder — override per character */
+  background-color: #c47f3a;
+}
+
+.npc-dialog-portrait::after {
+  content: "";
+  position: absolute;
+  inset: 4px;
+  background: #f4e4c1;
+  /* Simple pixel face */
+  box-shadow:
+    10px 8px 0 4px #2b1d0e,
+    18px 8px 0 4px #2b1d0e,
+    10px 18px 0 2px #2b1d0e,
+    18px 18px 0 2px #2b1d0e,
+    14px 28px 0 0 #ac3232;
+}
+
+.npc-dialog-name {
+  position: absolute;
+  top: -28px;
+  left: 4px;
+  padding: 4px 14px;
+  background: #6b4f12;
+  border: 2px solid #8b6914;
+  color: #fbf236;
+  font-family: "Press Start 2P", monospace;
+  font-size: 9px;
+  -webkit-font-smoothing: none;
+  font-smooth: never;
+}
+
+.npc-dialog-text {
+  margin: 0;
+  min-height: 28px;
+}
+
+.npc-dialog-text .typing-cursor {
+  display: inline-block;
+  width: 10px;
+  height: 16px;
+  background: #f4e4c1;
+  animation: blink 1s steps(1) infinite;
+  vertical-align: middle;
+  margin-left: 2px;
+}
+
+/* Continue indicator (blinking triangle) */
+.npc-dialog-next {
+  position: absolute;
+  right: 14px;
+  bottom: 8px;
+  width: 0;
+  height: 0;
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+  border-top: 10px solid #fbf236;
+  animation: blink 1s steps(1) infinite;
+  cursor: pointer;
+}
+
+.npc-dialog-next.hidden {
+  display: none;
+}
+
+/* Dialog close */
+.npc-dialog-close {
+  position: absolute;
+  top: 6px;
+  right: 10px;
+  width: 20px;
+  height: 20px;
+  background: #ac3232;
+  border: 2px solid #6b4f12;
+  color: #f4e4c1;
+  font-size: 12px;
+  line-height: 1;
+  padding: 0;
+  cursor: pointer;
+  display: none; /* Hidden during typing, shown when done */
+}
+
+.npc-dialog-box.done .npc-dialog-close {
+  display: block;
+}
+
+/* Dialog for project details (within app windows) */
+.dialog-inline {
+  margin: 0;
+  font-size: 12px;
+}
+
+/* Item reward popup */
+.npc-dialog-reward {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 10px;
+  padding: 8px 12px;
+  border: 2px solid #fbf236;
+  background: rgba(251,242,54,.12);
+  color: #fbf236;
+  font-family: "Press Start 2P", monospace;
+  font-size: 9px;
+}

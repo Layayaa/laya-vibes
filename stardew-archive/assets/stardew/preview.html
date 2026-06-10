@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<title>星露谷素材预览</title>
+<style>
+  body { background: #1a1c2c; color: #f4f4f4; font-family: monospace; padding: 20px; }
+  h1 { color: #ef7d57; font-size: 16px; }
+  h2 { color: #ffcd75; font-size: 13px; margin: 24px 0 6px; border-bottom: 2px solid #29366f; padding-bottom: 4px; }
+  .info { color: #888; font-size: 10px; margin-bottom: 8px; }
+  .grid { display: flex; flex-wrap: wrap; gap: 6px; }
+  .card { background: #11131f; border: 2px solid #29366f; padding: 4px; text-align: center; }
+  .card img { image-rendering: pixelated; display: block; max-width: 120px; max-height: 120px; margin: 0 auto; background: #0a0a14; }
+  .card .label { font-size: 8px; color: #b7c5ff; margin-top: 2px; word-break: break-all; max-width: 120px; }
+</style>
+</head>
+<body>
+<h1>Stardew Valley — 抠图结果预览</h1>
+<p style="color:#888;font-size:11px;">共 291 个碎片，整理在 <code>assets/stardew/cutouts/</code> 下</p>
+
+<h2>items/ (126个) — 小图标 100px级</h2>
+<div class="info">物品/作物/矿物 | item_595_NN.png</div>
+<div class="grid" id="g-items"></div>
+
+<h2>portraits/ (54个) — 中型竖版 160x200级</h2>
+<div class="info">角色/NPC/家具 | portrait_598_NN.png</div>
+<div class="grid" id="g-portraits"></div>
+
+<h2>furniture/ (12个)</h2>
+<div class="info">家具/建筑 | furniture_549_NN.png</div>
+<div class="grid" id="g-furniture"></div>
+
+<h2>decorations/ (15个)</h2>
+<div class="info">装饰/树木 | decor_551_NN.png</div>
+<div class="grid" id="g-decorations"></div>
+
+<h2>tall-sprites/ (22个)</h2>
+<div class="info">竖长条/栅栏 | tall_542_NN.png, tall_546_NN.png</div>
+<div class="grid" id="g-tall"></div>
+
+<h2>ui-banners/ (18个)</h2>
+<div class="info">横幅/面板 | banner_XXX_NN.png</div>
+<div class="grid" id="g-banners"></div>
+
+<h2>ui-panels/ (6个)</h2>
+<div class="info">面板组件 | panel_544_NN.png</div>
+<div class="grid" id="g-panels"></div>
+
+<h2>scenes/ (2个)</h2>
+<div class="info">宽幅场景 | scene_597_NN.png</div>
+<div class="grid" id="g-scenes"></div>
+
+<h2>screenshots/ (36个)</h2>
+<div class="info">截图残片 | ss_XXX_NN.png</div>
+<div class="grid" id="g-screenshots"></div>
+
+<script>
+const cats = [
+  {id:"items", dir:"items", files:130, pfx:["item_595"]},
+  {id:"portraits", dir:"portraits", files:56, pfx:["portrait_598"]},
+  {id:"furniture", dir:"furniture", files:14, pfx:["furniture_549"]},
+  {id:"decorations", dir:"decorations", files:17, pfx:["decor_551"]},
+  {id:"tall", dir:"tall-sprites", files:14, pfx:["tall_542","tall_546"]},
+  {id:"banners", dir:"ui-banners", files:6, pfx:["banner_541","banner_543","banner_545","banner_547"]},
+  {id:"panels", dir:"ui-panels", files:8, pfx:["panel_544"]},
+  {id:"scenes", dir:"scenes", files:4, pfx:["scene_597"]},
+  {id:"screenshots", dir:"screenshots", files:14, pfx:["ss_548","ss_600","ss_601"]},
+];
+
+cats.forEach(c => {
+  const grid = document.getElementById("g-" + c.id);
+  if (!grid) return;
+  let html = "";
+  c.pfx.forEach(p => {
+    for (let i = 0; i < c.files; i++) {
+      const n = String(i).padStart(2, "0");
+      const path = `cutouts/${c.dir}/${p}_${n}.png`;
+      html += `<div class="card"><img src="${path}" loading="lazy" onerror="this.parentElement.remove()"><div class="label">${p}_${n}.png</div></div>`;
+    }
+  });
+  grid.innerHTML = html;
+});
+</script>
+</body>
+</html>

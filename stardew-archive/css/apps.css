@@ -1,0 +1,486 @@
+/* ===== App Content — Stardew Theme ===== */
+.app-section {
+  display: grid;
+  gap: 14px;
+}
+
+.app-card {
+  border: 3px solid #6b4f12;
+  box-shadow: 4px 4px 0 #4a3010;
+  background: #faf0d7;
+  padding: 12px;
+}
+
+.app-heading {
+  margin: 0 0 10px;
+  font-size: 13px;
+  color: #6b4f12;
+}
+
+.app-sub {
+  margin: 0 0 8px;
+  font-size: 12px;
+  line-height: 1.9;
+}
+
+/* About scroll */
+.about-scroll {
+  position: relative;
+  min-height: 100%;
+  padding: 34px 24px 20px;
+  border: 4px solid #8b6914;
+  box-shadow: inset 0 0 0 2px #d89a4a, 4px 4px 0 #4a3010;
+  background:
+    radial-gradient(circle at 12% 16%, rgba(139,105,20,.13) 0 5px, transparent 6px),
+    radial-gradient(circle at 82% 78%, rgba(139,105,20,.10) 0 7px, transparent 8px),
+    repeating-linear-gradient(0deg, rgba(107,79,18,.05), rgba(107,79,18,.05) 1px, transparent 1px, transparent 28px),
+    #fff1cb;
+}
+
+.scroll-pin {
+  position: absolute;
+  top: 12px;
+  width: 38px;
+  height: 14px;
+  border: 2px solid #6b4f12;
+  background: #c47f3a;
+  box-shadow: 2px 2px 0 #4a3010;
+}
+
+.scroll-pin-left { left: 18px; }
+.scroll-pin-right { right: 18px; }
+
+.scroll-title {
+  margin: 0 0 18px;
+  color: #6b4f12;
+  font-family: "Press Start 2P", monospace;
+  font-size: 13px;
+  text-align: center;
+  text-shadow: 1px 1px 0 #f8d48a;
+}
+
+.about-typewriter {
+  min-height: 230px;
+}
+
+.about-typewriter::after {
+  content: "";
+  display: inline-block;
+  width: 10px;
+  height: 16px;
+  margin-left: 4px;
+  background: #6b4f12;
+  animation: blink 1s steps(1) infinite;
+}
+
+.about-skip {
+  margin-top: 10px;
+}
+
+/* File tree */
+.file-tree {
+  font-family: "Press Start 2P", monospace;
+  font-size: 9px;
+  line-height: 2;
+  white-space: pre-wrap;
+  color: #2b1d0e;
+}
+
+/* Project cards */
+.project-list {
+  display: grid;
+  gap: 10px;
+}
+
+.project-board {
+  display: grid;
+  grid-template-columns: minmax(180px, 230px) 1fr;
+  gap: 12px;
+  min-height: 100%;
+}
+
+.project-chest-list {
+  display: grid;
+  align-content: start;
+  gap: 8px;
+  padding: 10px;
+  border: 3px solid #6b4f12;
+  background: #d9ad62;
+  box-shadow: 4px 4px 0 #4a3010;
+}
+
+.project-file {
+  min-height: 42px;
+  padding: 8px 9px;
+  border: 2px solid #6b4f12;
+  background: #f4e4c1;
+  box-shadow: 2px 2px 0 #4a3010;
+  color: #2b1d0e;
+  font-size: 9px;
+  line-height: 1.45;
+  text-align: left;
+}
+
+.project-file:hover,
+.project-file.active {
+  background: #fbf236;
+  color: #2b1d0e;
+}
+
+.project-detail {
+  min-width: 0;
+}
+
+.project-parchment {
+  min-height: 100%;
+  padding: 18px;
+  border: 4px solid #8b6914;
+  box-shadow: inset 0 0 0 2px #d89a4a, 4px 4px 0 #4a3010;
+  background:
+    radial-gradient(circle at 85% 18%, rgba(196,127,58,.13) 0 8px, transparent 9px),
+    repeating-linear-gradient(0deg, transparent, transparent 30px, rgba(139,105,20,.06) 30px, rgba(139,105,20,.06) 31px),
+    #fff1cb;
+}
+
+.project-kicker {
+  margin: 0 0 10px;
+  color: #8b6914;
+  font-family: "Press Start 2P", monospace;
+  font-size: 9px;
+}
+
+.project-parchment h4 {
+  margin: 0 0 12px;
+  color: #6b4f12;
+  font-size: 14px;
+}
+
+.project-parchment p,
+.project-tech-list {
+  margin: 0 0 12px;
+  font-size: 12px;
+  line-height: 1.9;
+}
+
+.project-tech-list {
+  padding-left: 18px;
+}
+
+.project-tech-list li {
+  margin-bottom: 8px;
+}
+
+.project-demo {
+  display: grid;
+  align-content: start;
+  gap: 10px;
+}
+
+.project-item {
+  padding: 10px;
+  border: 2px solid #6b4f12;
+  background: #faf0d7;
+  box-shadow: 3px 3px 0 #4a3010;
+}
+
+.project-item h4 {
+  margin: 0 0 6px;
+  font-size: 11px;
+  color: #6b4f12;
+}
+
+.project-item p {
+  margin: 0;
+  font-size: 12px;
+  line-height: 1.9;
+}
+
+/* Buttons */
+.btn-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.action-btn {
+  padding: 8px 12px;
+  background: #c47f3a;
+  color: #f4e4c1;
+  border: 2px solid #6b4f12;
+  box-shadow: 3px 3px 0 #4a3010;
+  font-size: 10px;
+  text-shadow: 1px 1px 0 #4a3010;
+}
+
+.action-btn:active {
+  transform: translate(2px, 2px);
+  box-shadow: 1px 1px 0 #4a3010;
+}
+
+/* Settings */
+.settings-grid {
+  display: grid;
+  gap: 10px;
+}
+
+.settings-option {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 10px;
+  border: 2px solid #6b4f12;
+  background: #faf0d7;
+  box-shadow: 3px 3px 0 #4a3010;
+}
+
+.settings-choice {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.settings-choice button {
+  padding: 7px 10px;
+  background: #e0c890;
+  border: 2px solid #6b4f12;
+  box-shadow: 2px 2px 0 #4a3010;
+  font-size: 10px;
+}
+
+.settings-choice button:hover {
+  background: #c47f3a;
+  color: #f4e4c1;
+}
+
+.settings-choice button.active {
+  background: #fbf236;
+  color: #2b1d0e;
+  box-shadow: inset 2px 2px 0 rgba(0,0,0,.18), 2px 2px 0 #4a3010;
+}
+
+/* Browser (TV) */
+.browser-bar {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.browser-bar input {
+  flex: 1;
+  min-width: 0;
+  padding: 8px;
+  border: 2px solid #6b4f12;
+  box-shadow: inset 2px 2px 0 #d4c4a0;
+  background: #faf0d7;
+  font-size: 10px;
+}
+
+.browser-page {
+  padding: 12px;
+  border: 2px solid #6b4f12;
+  background: #faf0d7;
+}
+
+/* Contact — Mailbox letters */
+.contact-list {
+  display: grid;
+  gap: 10px;
+}
+
+.mailbox-board {
+  display: grid;
+  grid-template-columns: minmax(170px, 210px) 1fr;
+  gap: 12px;
+  min-height: 100%;
+}
+
+.mailbox-stack {
+  display: grid;
+  align-content: start;
+  gap: 8px;
+  padding: 10px;
+  border: 3px solid #6b4f12;
+  background: #c47f3a;
+  box-shadow: 4px 4px 0 #4a3010;
+}
+
+.mailbox-envelope {
+  min-height: 46px;
+  padding: 9px 10px;
+  border: 2px solid #6b4f12;
+  background: #fff8e7;
+  box-shadow: 2px 2px 0 #4a3010;
+  color: #2b1d0e;
+  font-size: 10px;
+  line-height: 1.45;
+  text-align: left;
+}
+
+.mailbox-envelope:hover,
+.mailbox-envelope.active {
+  background: #fbf236;
+}
+
+.mailbox-reader {
+  min-width: 0;
+}
+
+.contact-item {
+  padding: 10px;
+  border: 2px solid #6b4f12;
+  background: #faf0d7;
+  box-shadow: 3px 3px 0 #4a3010;
+  font-size: 12px;
+  line-height: 1.9;
+}
+
+.contact-item::before {
+  content: "📧 ";
+}
+
+/* Mailbox letter style */
+.mailbox-letter {
+  padding: 14px;
+  border: 2px dashed #6b4f12;
+  background: #fff8e7;
+  box-shadow: 3px 3px 0 #4a3010;
+  font-size: 12px;
+  line-height: 2;
+}
+
+.mailbox-letter-open {
+  min-height: 100%;
+  padding: 18px;
+  border: 4px solid #8b6914;
+  box-shadow: inset 0 0 0 2px #d89a4a, 4px 4px 0 #4a3010;
+  background:
+    linear-gradient(135deg, rgba(255,255,255,.38), transparent 34%),
+    repeating-linear-gradient(0deg, transparent, transparent 30px, rgba(139,105,20,.06) 30px, rgba(139,105,20,.06) 31px),
+    #fff8e7;
+}
+
+.mailbox-letter-open h4 {
+  margin: 0 0 12px;
+  color: #6b4f12;
+  font-size: 14px;
+}
+
+.mailbox-letter-open p {
+  margin: 0 0 14px;
+  font-size: 12px;
+  line-height: 1.9;
+}
+
+.mailbox-action {
+  display: inline-block;
+  text-decoration: none;
+}
+
+.mailbox-code {
+  display: inline-block;
+  padding: 9px 12px;
+  border: 2px solid #6b4f12;
+  background: #f4e4c1;
+  box-shadow: 3px 3px 0 #4a3010;
+  color: #2b1d0e;
+  font-family: "Press Start 2P", monospace;
+  font-size: 10px;
+}
+
+/* Recycle bin */
+.recycle-list {
+  display: grid;
+  gap: 10px;
+}
+
+.recycle-item {
+  padding: 10px;
+  border: 2px solid #6b4f12;
+  background: #f0f7e5;
+  box-shadow: 3px 3px 0 #4a3010;
+  font-size: 12px;
+}
+
+.note-box {
+  padding: 12px;
+  border: 2px dashed #6b4f12;
+  background: #fff8e7;
+}
+
+/* Skills tree — Stardew level bars */
+.skills-panel {
+  display: grid;
+  gap: 8px;
+}
+
+.skill-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 6px 10px;
+  border: 2px solid #6b4f12;
+  background: #faf0d7;
+  box-shadow: 2px 2px 0 #4a3010;
+}
+
+.skill-icon {
+  width: 12px; height: 12px;
+  border: 2px solid #4a3010;
+  flex: 0 0 auto;
+  box-shadow: 1px 1px 0 #4a3010;
+}
+
+.skill-name {
+  width: 90px;
+  font-size: 10px;
+  color: #2b1d0e;
+  flex: 0 0 auto;
+}
+
+.skill-bar {
+  flex: 1;
+  height: 14px;
+  border: 2px solid #4a3010;
+  background: #2b1d0e;
+  position: relative;
+}
+
+.skill-bar-fill {
+  display: block;
+  height: 100%;
+  background: #fbf236;
+}
+
+/* Mailbox window special */
+.mailbox-window .window-body {
+  background: #e8dcc8 url("../assets/stardew/cutouts/title-board.png") no-repeat top right / auto 60px;
+}
+
+@media (max-width: 767px) {
+  .btn-row, .settings-choice {
+    flex-direction: column;
+  }
+
+  .project-board {
+    grid-template-columns: 1fr;
+  }
+
+  .mailbox-board {
+    grid-template-columns: 1fr;
+  }
+
+  .project-chest-list {
+    max-height: 190px;
+    overflow: auto;
+  }
+
+  .mailbox-stack {
+    max-height: 180px;
+    overflow: auto;
+  }
+
+  .about-scroll {
+    padding-inline: 14px;
+  }
+}

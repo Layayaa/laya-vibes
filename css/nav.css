@@ -1,0 +1,87 @@
+/* ===========================================
+   NAVIGATION — Right-side dot nav + theme toggle
+   =========================================== */
+.nav {
+    position: fixed;
+    right: 24px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    z-index: 100;
+}
+
+.nav-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: rgba(245, 240, 232, 0.3);
+    cursor: none;
+    transition: width 0.3s, height 0.3s, background 0.3s;
+    position: relative;
+}
+
+.nav-dot.active {
+    width: 12px;
+    height: 12px;
+    background: var(--pink);
+    animation: dot-pulse 2s ease-in-out infinite;
+}
+
+.nav-dot:hover { background: var(--cyan); }
+
+.nav-tooltip {
+    position: absolute;
+    right: 28px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-family: var(--font-display);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text);
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s;
+}
+
+.nav-dot:hover .nav-tooltip { opacity: 1; }
+
+.nav-theme-toggle {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    border: 1px solid rgba(245, 240, 232, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    cursor: none;
+    transition: border-color 0.3s, background 0.3s;
+    color: var(--text);
+}
+
+.nav-theme-toggle:hover {
+    border-color: var(--cyan);
+    background: rgba(0, 212, 255, 0.1);
+}
+
+@keyframes dot-pulse {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(255, 45, 111, 0.4); }
+    50% { box-shadow: 0 0 0 8px rgba(255, 45, 111, 0); }
+}
+
+[data-theme="light"] .nav-dot { background: rgba(10, 10, 10, 0.2); }
+[data-theme="light"] .nav-dot.active { background: var(--pink); }
+[data-theme="light"] .nav-theme-toggle { border-color: rgba(10, 10, 10, 0.2); }
+
+@media (max-width: 767px) {
+    .nav { right: 12px; gap: 12px; }
+    .nav-dot { width: 6px; height: 6px; }
+    .nav-dot.active { width: 10px; height: 10px; }
+    .nav-tooltip { display: none; }
+}
