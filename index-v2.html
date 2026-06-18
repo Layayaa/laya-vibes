@@ -1,0 +1,220 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laya 2026 | 霓虹黑板候选人档案</title>
+    <meta name="description" content="Laya 的新版个人网站原型：黑板涂鸦式候选人档案墙，展示 AI、全栈、小程序项目与真实 GitHub 收藏夹。">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bungee&family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/neon-chalkboard.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js" defer></script>
+    <script src="js/ai-daily-pdf.js" defer></script>
+    <script src="js/neon-chalkboard.js" defer></script>
+</head>
+<body>
+    <div class="chalk-noise" aria-hidden="true"></div>
+    <div class="neon-cursor" aria-hidden="true">
+        <span class="neon-cursor-dot"></span>
+        <span class="neon-cursor-ring"></span>
+    </div>
+    <nav class="wall-nav" aria-label="新版网站导航">
+        <a href="#about">关于我</a>
+        <a href="#cases">项目档案</a>
+        <a href="#stars">收藏星标</a>
+        <a href="#skills">能力</a>
+    </nav>
+
+    <main class="chalkboard">
+        <section class="hero-wall panel" id="top">
+            <div class="hero-doodles" aria-hidden="true">
+                <span class="doodle-star star-a">☆</span>
+                <span class="doodle-star star-b">✦</span>
+                <span class="doodle-loop"></span>
+                <span class="doodle-zigzag"></span>
+            </div>
+            <p class="eyebrow sticker sticker-white">AI / 全栈开发 / 小程序</p>
+            <h1 class="hero-title" aria-label="Laya 2026">
+                <span>L</span><span>A</span><span>Y</span><span>A</span>
+                <small>2026</small>
+            </h1>
+            <div class="hero-card chalk-card">
+                <p class="hero-role">候选人档案</p>
+                <p>你好，我是 Laya。我关注 AI 应用、全栈开发和小程序交付，习惯从需求拆解开始，把流程、界面、数据和部署一步步整理成可以运行、可以演示的产品。</p>
+            </div>
+            <div class="hero-meta">
+                <span>中国成都</span>
+                <span>寻找产品思维型开发岗位机会</span>
+                <a class="github-chip" href="https://github.com/Layayaa" target="_blank" rel="noopener">GitHub / Layayaa</a>
+                <button class="daily-download-chip" type="button" data-ai-daily-download>下载今日 AI 日报 PDF</button>
+            </div>
+        </section>
+
+        <section class="about-wall panel" id="about">
+            <div class="section-heading">
+                <span class="section-number">01.</span>
+                <h2>关于我</h2>
+            </div>
+            <div class="about-grid">
+                <article class="paper-card about-note">
+                    <p class="paper-label">个人档案卡</p>
+                    <h3>Laya</h3>
+                    <p>关注 AI 应用、全栈开发和小程序交付。我的项目通常从需求拆解开始，逐步落实到流程设计、页面实现、数据组织和部署验证。</p>
+                    <ul>
+                        <li>把需求讲清楚，也把东西做出来。</li>
+                        <li>能把 AI 工具、业务流程和前后端实现串起来。</li>
+                        <li>关注项目是否可演示、可交付、可解释。</li>
+                    </ul>
+                </article>
+                <figure class="pixel-companion-card" data-pixel-companion>
+                    <div class="pixel-stage" aria-label="Pixel Laya，可动像素小助手" role="img">
+                        <div class="pixel-sun"></div>
+                        <div class="pixel-shadow"></div>
+                        <div class="pixel-character">
+                            <span class="pixel-hair hair-back"></span>
+                            <span class="pixel-head"></span>
+                            <span class="pixel-hair hair-bangs"></span>
+                            <span class="pixel-eye eye-left"></span>
+                            <span class="pixel-eye eye-right"></span>
+                            <span class="pixel-cheek cheek-left"></span>
+                            <span class="pixel-cheek cheek-right"></span>
+                            <span class="pixel-body"></span>
+                            <span class="pixel-scarf"></span>
+                            <span class="pixel-arm arm-left"></span>
+                            <span class="pixel-arm arm-right"></span>
+                            <span class="pixel-laptop"></span>
+                            <span class="pixel-leg leg-left"></span>
+                            <span class="pixel-leg leg-right"></span>
+                        </div>
+                    </div>
+                    <figcaption>
+                        <strong>Pixel Laya</strong>
+                        <span>AI / Code / Product companion</span>
+                    </figcaption>
+                </figure>
+                <article class="mini-index chalk-card">
+                    <p class="paper-label">快速索引</p>
+                    <span>3 份项目档案</span>
+                    <span>6 组星标信号</span>
+                    <span>15+ 个能力标签</span>
+                </article>
+            </div>
+        </section>
+
+        <section class="case-wall panel" id="cases">
+            <div class="section-heading">
+                <span class="section-number">02.</span>
+                <h2>项目档案</h2>
+            </div>
+
+            <article class="case-board case-board-wide" data-case>
+                <div class="case-copy">
+                    <p class="sticker sticker-purple">项目 001 / Web 系统</p>
+                    <h3>工程材料询价系统</h3>
+                    <p>企业内部历史询价复用系统，帮助工程师更快检索历史报价、复用上传资料，并给管理侧提供统计视角。</p>
+                    <div class="tag-row">
+                        <span>React</span><span>TypeScript</span><span>Django</span><span>MySQL</span><span>Docker</span>
+                    </div>
+                    <p class="contribution">贡献：流程梳理、前端页面、查询筛选逻辑、统计与部署协作。</p>
+                </div>
+                <div class="evidence-strip">
+                    <img src="项目截图/微信图片_20260604105241_752_152.png" alt="工程材料询价系统智能查询界面">
+                    <img src="项目截图/微信图片_20260604105241_753_152.png" alt="工程材料询价系统条件筛选界面">
+                    <img src="项目截图/微信图片_20260604105241_754_152.png" alt="工程材料询价系统统计分析界面">
+                </div>
+            </article>
+
+            <div class="case-pair">
+                <article class="case-board" data-case>
+                    <div class="case-copy">
+                        <p class="sticker sticker-lime">项目 002 / AI 应用</p>
+                        <h3>AI 实习推荐系统</h3>
+                        <p>围绕简历分析和岗位推荐做的 AI 应用，把上传、解析、技能标签和推荐结果串成一条完整流程。</p>
+                        <div class="tag-row">
+                            <span>Python</span><span>Dify</span><span>Weaviate</span><span>Docker</span>
+                        </div>
+                    </div>
+                    <div class="evidence-stack">
+                        <img src="项目截图/微信图片_20260604110348_755_152.png" alt="AI 实习推荐系统简历分析界面">
+                        <img src="项目截图/微信图片_20260604110348_756_152.png" alt="AI 实习推荐系统岗位推荐界面">
+                    </div>
+                </article>
+
+                <article class="case-board" data-case>
+                    <div class="case-copy">
+                        <p class="sticker sticker-purple">项目 003 / 小程序</p>
+                        <h3>旌灵云仓小助手</h3>
+                        <p>面向德阳 OPC 社区的小程序，整合会议空间预约辅助、活动信息、通知提醒与反馈提交。</p>
+                        <div class="tag-row">
+                            <span>微信小程序</span><span>JavaScript</span><span>CloudBase</span><span>云函数</span>
+                        </div>
+                    </div>
+                    <div class="phone-collage">
+                        <img src="assets/jingling-home.jpg" alt="旌灵云仓小助手首页">
+                        <img src="assets/jingling-booking.jpg" alt="旌灵云仓小助手预约办理">
+                        <img src="assets/jingling-profile.jpg" alt="旌灵云仓小助手我的预约">
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <section class="starred-wall panel" id="stars">
+            <div class="section-heading">
+                <span class="section-number">03.</span>
+                <h2>星标收藏架</h2>
+            </div>
+            <p class="wall-intro">我会把看到有价值的工具和技能仓库先收进这里。它们像从抽屉里倒出来的一桌收藏卡：可以拖动、翻开、洗牌，也可以一次性亮出整组 GitHub 星标。</p>
+            <div class="draw-controls" aria-label="GitHub 收藏抽卡控制">
+                <button class="draw-button" type="button" data-shuffle-stars>洗牌</button>
+                <button class="draw-button" type="button" data-draw-all>全部翻开</button>
+                <button class="draw-button draw-button-ghost" type="button" data-reset-stars>重置</button>
+                <span class="draw-count" data-star-count>已翻开 0 / 20</span>
+                <span class="draw-hint">可以拖动这些卡片</span>
+            </div>
+            <div class="repo-grid draw-grid" aria-label="GitHub 收藏散卡桌面">
+                <article class="repo-card draw-card" data-accent="lime"><div class="repo-card-inner" role="button" tabindex="0"><span class="repo-back"><strong>?</strong><em>星标信号</em></span><span class="repo-front"><button class="pin-card" type="button" aria-label="固定这张卡片">固定</button><em>办公代理</em><h3>larksuite / cli</h3><p>Lark/Feishu 命令行工具，面向人类和 AI 代理，覆盖飞书核心业务场景。</p><a href="https://github.com/larksuite/cli" target="_blank" rel="noopener">打开 GitHub</a></span></div></article>
+                <article class="repo-card draw-card" data-accent="lime"><div class="repo-card-inner" role="button" tabindex="0"><span class="repo-back"><strong>?</strong><em>星标信号</em></span><span class="repo-front"><button class="pin-card" type="button" aria-label="固定这张卡片">固定</button><em>网页动效</em><h3>greensock / gsap-skills</h3><p>GSAP 官方 AI 技能，用来学习更精致的网页动效和滚动叙事。</p><a href="https://github.com/greensock/gsap-skills" target="_blank" rel="noopener">打开 GitHub</a></span></div></article>
+                <article class="repo-card draw-card" data-accent="purple"><div class="repo-card-inner" role="button" tabindex="0"><span class="repo-back"><strong>?</strong><em>星标信号</em></span><span class="repo-front"><button class="pin-card" type="button" aria-label="固定这张卡片">固定</button><em>技能市场</em><h3>phuryn / pm-skills</h3><p>PM 技能市场，包含代理技能、命令和插件，从发现到执行与发布。</p><a href="https://github.com/phuryn/pm-skills" target="_blank" rel="noopener">打开 GitHub</a></span></div></article>
+                <article class="repo-card draw-card" data-accent="pink"><div class="repo-card-inner" role="button" tabindex="0"><span class="repo-back"><strong>?</strong><em>星标信号</em></span><span class="repo-front"><button class="pin-card" type="button" aria-label="固定这张卡片">固定</button><em>演示文稿</em><h3>op7418 / guizang-ppt-skill</h3><p>AI 代理技能，用于生成美观 HTML 幻灯片和低功耗演示运行时。</p><a href="https://github.com/op7418/guizang-ppt-skill" target="_blank" rel="noopener">打开 GitHub</a></span></div></article>
+                <article class="repo-card draw-card" data-accent="purple"><div class="repo-card-inner" role="button" tabindex="0"><span class="repo-back"><strong>?</strong><em>星标信号</em></span><span class="repo-front"><button class="pin-card" type="button" aria-label="固定这张卡片">固定</button><em>Claude 技能</em><h3>fleurytian / awesome-claude-skills</h3><p>Claude 技能 资源合集，适合快速浏览技能生态和可复用工作流。</p><a href="https://github.com/fleurytian/awesome-claude-skills" target="_blank" rel="noopener">打开 GitHub</a></span></div></article>
+                <article class="repo-card draw-card" data-accent="pink"><div class="repo-card-inner" role="button" tabindex="0"><span class="repo-back"><strong>?</strong><em>星标信号</em></span><span class="repo-front"><button class="pin-card" type="button" aria-label="固定这张卡片">固定</button><em>演示文稿</em><h3>lewislulu / html-ppt-skill</h3><p>HTML PPT Studio，拥有多个主题、布局和动画，用于创建专业 HTML 演示文稿。</p><a href="https://github.com/lewislulu/html-ppt-skill" target="_blank" rel="noopener">打开 GitHub</a></span></div></article>
+                <article class="repo-card draw-card" data-accent="purple"><div class="repo-card-inner" role="button" tabindex="0"><span class="repo-back"><strong>?</strong><em>星标信号</em></span><span class="repo-front"><button class="pin-card" type="button" aria-label="固定这张卡片">固定</button><em>Claude 技能</em><h3>l3mpire / claude-skills</h3><p>Claude skills 相关项目，关注代理技能如何落到真实任务。</p><a href="https://github.com/l3mpire/claude-skills" target="_blank" rel="noopener">打开 GitHub</a></span></div></article>
+                <article class="repo-card draw-card" data-accent="cyan"><div class="repo-card-inner" role="button" tabindex="0"><span class="repo-back"><strong>?</strong><em>星标信号</em></span><span class="repo-front"><button class="pin-card" type="button" aria-label="固定这张卡片">固定</button><em>长期记忆</em><h3>rohitg00 / agentmemory</h3><p>AI 编码代理持久记忆，用来理解长期上下文和项目历史如何被保存。</p><a href="https://github.com/rohitg00/agentmemory" target="_blank" rel="noopener">打开 GitHub</a></span></div></article>
+                <article class="repo-card draw-card" data-accent="cyan"><div class="repo-card-inner" role="button" tabindex="0"><span class="repo-back"><strong>?</strong><em>星标信号</em></span><span class="repo-front"><button class="pin-card" type="button" aria-label="固定这张卡片">固定</button><em>3D 编辑器</em><h3>playcanvas / supersplat</h3><p>3D 高斯飞溅编辑器，适合观察可视化工具和 3D 编辑体验。</p><a href="https://github.com/playcanvas/supersplat" target="_blank" rel="noopener">打开 GitHub</a></span></div></article>
+                <article class="repo-card draw-card" data-accent="lime"><div class="repo-card-inner" role="button" tabindex="0"><span class="repo-back"><strong>?</strong><em>星标信号</em></span><span class="repo-front"><button class="pin-card" type="button" aria-label="固定这张卡片">固定</button><em>工程师技能</em><h3>mattpocock / 技能</h3><p>工程师技能合集，来自 .claude 目录，适合学习工程化 skill 组织。</p><a href="https://github.com/mattpocock" target="_blank" rel="noopener">打开 GitHub</a></span></div></article>
+                <article class="repo-card draw-card" data-accent="purple"><div class="repo-card-inner" role="button" tabindex="0"><span class="repo-back"><strong>?</strong><em>星标信号</em></span><span class="repo-front"><button class="pin-card" type="button" aria-label="固定这张卡片">固定</button><em>提示词</em><h3>linshenkx / prompt-optimizer</h3><p>提示词优化器，用来研究如何通过更清晰的表达获得更稳定的 AI 结果。</p><a href="https://github.com/linshenkx/prompt-optimizer" target="_blank" rel="noopener">打开 GitHub</a></span></div></article>
+                <article class="repo-card draw-card" data-accent="cyan"><div class="repo-card-inner" role="button" tabindex="0"><span class="repo-back"><strong>?</strong><em>星标信号</em></span><span class="repo-front"><button class="pin-card" type="button" aria-label="固定这张卡片">固定</button><em>写作代理</em><h3>syojus / MaaYuan</h3><p>代写鸢 / 如鸢一键长草小助手，关注 AI 写作和自动化辅助。</p><a href="https://github.com/syojus/MaaYuan" target="_blank" rel="noopener">打开 GitHub</a></span></div></article>
+                <article class="repo-card draw-card" data-accent="lime"><div class="repo-card-inner" role="button" tabindex="0"><span class="repo-back"><strong>?</strong><em>星标信号</em></span><span class="repo-front"><button class="pin-card" type="button" aria-label="固定这张卡片">固定</button><em>设计系统</em><h3>VoltAgent / awesome-design-md</h3><p>热门品牌设计系统的 DESIGN.md 分析，可用于生成匹配用户界面。</p><a href="https://github.com/VoltAgent/awesome-design-md" target="_blank" rel="noopener">打开 GitHub</a></span></div></article>
+                <article class="repo-card draw-card" data-accent="lime"><div class="repo-card-inner" role="button" tabindex="0"><span class="repo-back"><strong>?</strong><em>星标信号</em></span><span class="repo-front"><button class="pin-card" type="button" aria-label="固定这张卡片">固定</button><em>品牌设计</em><h3>zephyrwang6 / 品牌设计-md</h3><p>Claude Code 技能，让 AI 代理掌握多个世界级品牌的设计语言。</p><a href="https://github.com/zephyrwang6" target="_blank" rel="noopener">打开 GitHub</a></span></div></article>
+                <article class="repo-card draw-card" data-accent="lime"><div class="repo-card-inner" role="button" tabindex="0"><span class="repo-back"><strong>?</strong><em>星标信号</em></span><span class="repo-front"><button class="pin-card" type="button" aria-label="固定这张卡片">固定</button><em>学术主页</em><h3>xyjoey / 棱镜</h3><p>优雅的学术主页搭建工具，适合观察个人主页信息组织。</p><a href="https://github.com/xyjoey" target="_blank" rel="noopener">打开 GitHub</a></span></div></article>
+                <article class="repo-card draw-card" data-accent="pink"><div class="repo-card-inner" role="button" tabindex="0"><span class="repo-back"><strong>?</strong><em>星标信号</em></span><span class="repo-front"><button class="pin-card" type="button" aria-label="固定这张卡片">固定</button><em>HTML 编辑器</em><h3>joyxiaofan-beep / html-visual-editor</h3><p>像编辑 PPT 一样可视化编辑本地 HTML 文件的 Chrome 扩展。</p><a href="https://github.com/joyxiaofan-beep/html-visual-editor" target="_blank" rel="noopener">打开 GitHub</a></span></div></article>
+                <article class="repo-card draw-card" data-accent="cyan"><div class="repo-card-inner" role="button" tabindex="0"><span class="repo-back"><strong>?</strong><em>星标信号</em></span><span class="repo-front"><button class="pin-card" type="button" aria-label="固定这张卡片">固定</button><em>智能体教程</em><h3>jjyaoo / HelloAgents</h3><p>基于教程 hello-agents 的代理框架，适合学习 Agent 基础。</p><a href="https://github.com/jjyaoo/HelloAgents" target="_blank" rel="noopener">打开 GitHub</a></span></div></article>
+                <article class="repo-card draw-card" data-accent="cyan"><div class="repo-card-inner" role="button" tabindex="0"><span class="repo-back"><strong>?</strong><em>星标信号</em></span><span class="repo-front"><button class="pin-card" type="button" aria-label="固定这张卡片">固定</button><em>智能体教程</em><h3>datawhalechina / hello-agents</h3><p>《从零开始构建智能体》，从零开始的智能体原理与实践教程。</p><a href="https://github.com/datawhalechina/hello-agents" target="_blank" rel="noopener">打开 GitHub</a></span></div></article>
+                <article class="repo-card draw-card" data-accent="cyan"><div class="repo-card-inner" role="button" tabindex="0"><span class="repo-back"><strong>?</strong><em>星标信号</em></span><span class="repo-front"><button class="pin-card" type="button" aria-label="固定这张卡片">固定</button><em>RAG</em><h3>HKUDS / RAG-Anything</h3><p>一体化 RAG 框架，连接文档理解、知识检索和 AI 应用工程化。</p><a href="https://github.com/HKUDS/RAG-Anything" target="_blank" rel="noopener">打开 GitHub</a></span></div></article>
+                <article class="repo-card draw-card" data-accent="cyan"><div class="repo-card-inner" role="button" tabindex="0"><span class="repo-back"><strong>?</strong><em>星标信号</em></span><span class="repo-front"><button class="pin-card" type="button" aria-label="固定这张卡片">固定</button><em>RAG 指南</em><h3>datawhalechina / all-in-rag</h3><p>大模型应用开发实战，RAG 技术全栈指南。</p><a href="https://github.com/datawhalechina/all-in-rag" target="_blank" rel="noopener">打开 GitHub</a></span></div></article>
+            </div>
+            <a class="github-board-link" href="https://github.com/Layayaa" target="_blank" rel="noopener">打开 GitHub 档案 / github.com/Layayaa</a>
+        </section>
+
+        <section class="skills-wall panel" id="skills">
+            <div class="section-heading">
+                <span class="section-number">04.</span>
+                <h2>能力看板</h2>
+            </div>
+            <div class="skill-stickers" aria-label="能力标签">
+                <span>Java</span><span>Python</span><span>Vue 3</span><span>React</span><span>TypeScript</span><span>Tailwind</span>
+                <span>Dify</span><span>Weaviate</span><span>MySQL</span><span>Docker</span><span>CloudBase</span><span>云函数</span>
+                <span>需求文档</span><span>客户沟通</span><span>PPT</span><span>AI 开发</span>
+            </div>
+        </section>
+
+    </main>
+</body>
+</html>
+
+
