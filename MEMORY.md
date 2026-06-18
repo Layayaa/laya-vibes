@@ -13,10 +13,11 @@
 - 2026-06-18: User clarified the target page is `index-v2.html` and the visible AI daily component should only be a button that downloads today's report as a PDF, not an expanded on-page newspaper section.
 - 2026-06-18: AI daily PDF entry on `index-v2.html` should be a compact homepage chip/button, not a separate full-height section.
 - 2026-06-18: User wants the downloaded AI daily PDF styled like a Republic-era Chinese newspaper, with period masthead, narrow columns, double rules, and aged paper texture.
-- 2026-06-18: Real AI daily source integration will use Vercel serverless first. Root `/` should serve `index-v2.html`, and `/api/ai-daily` should call OpenAI Responses API with the current `web_search` tool.
+- 2026-06-18: Real AI daily source integration uses Vercel serverless. Root `/` serves `index-v2.html`, and `/api/ai-daily` now uses public RSS/JSON source collection plus DeepSeek chat completions for summarization.
 - 2026-06-18: Added `.gitignore` to keep `.env`, local Vercel state, `node_modules`, and logs out of commits while deploying the AI daily API.
 - 2026-06-18: User prefers `index-v2.html` visible copy to be Chinese except for necessary product, code, URL, repository, and technology names.
 - 2026-06-18: Replaced the `index-v2.html` portrait/avatar card with an original CSS animated pixel companion named `Pixel Laya`, inspired by cozy pixel RPG character energy but not copied from Stardew Valley assets.
+- 2026-06-18: User chose DeepSeek over OpenAI for AI daily generation. DeepSeek is used only for summarization; the serverless function gathers real sources from feeds first because DeepSeek does not provide the OpenAI web search tool.
 
 ## External Resources
 
