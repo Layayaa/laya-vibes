@@ -18,6 +18,7 @@
 - 2026-06-18: User prefers `index-v2.html` visible copy to be Chinese except for necessary product, code, URL, repository, and technology names.
 - 2026-06-18: Replaced the `index-v2.html` portrait/avatar card with an original CSS animated pixel companion named `Pixel Laya`, inspired by cozy pixel RPG character energy but not copied from Stardew Valley assets.
 - 2026-06-18: User chose DeepSeek over OpenAI for AI daily generation. DeepSeek is used only for summarization; the serverless function gathers real sources from feeds first because DeepSeek does not provide the OpenAI web search tool.
+- 2026-06-18: User wants more information in the AI daily. Backend should collect more feed items and output 8-12 stories; PDF should support continuation pages instead of compressing everything onto one page.
 
 ## External Resources
 

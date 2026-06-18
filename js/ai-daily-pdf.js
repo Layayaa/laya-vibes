@@ -45,6 +45,20 @@
                 sourceName: '接口约定',
                 sourceUrl: '#daily',
             },
+            {
+                category: '信息源',
+                title: '日报会聚合多组公开来源',
+                body: '正式接入后，后端会先抓取 Hacker News、TechCrunch、The Verge、MIT Technology Review、Hugging Face 等公开来源，再交给模型整理。',
+                sourceName: '来源说明',
+                sourceUrl: '#daily',
+            },
+            {
+                category: '版面',
+                title: 'PDF 支持续页刊载',
+                body: '新闻条目较多时，PDF 会自动拆成多页，第一页保留刊头、头条和编辑按语，后续页面继续刊载更多报道。',
+                sourceName: '版面说明',
+                sourceUrl: '#daily',
+            },
         ],
     });
 
@@ -105,8 +119,11 @@
         stage.className = 'daily-pdf-stage';
         const dateText = formatDate(daily.date);
         const issueNo = getIssueNo(daily.date);
+        const stories = Array.isArray(daily.stories) ? daily.stories : [];
+        const firstPageStories = stories.slice(0, 6);
+        const extraPages = chunk(stories.slice(6), 6);
         stage.innerHTML = `
-            <article class="daily-pdf-paper">
+            <article class="daily-pdf-paper daily-pdf-page">
                 <header class="daily-pdf-masthead">
                     <div class="daily-pdf-ear daily-pdf-ear-left">
                         <span>不刊空谈</span>
@@ -139,19 +156,41 @@
                     </ul>
                 </aside>
                 <section class="daily-pdf-stories">
-                    ${daily.stories.map((story) => `
-                        <article class="daily-pdf-story">
-                            <p class="daily-pdf-story-category">${escapeHtml(story.category || '更新')}</p>
-                            <h4>${escapeHtml(story.title || '未命名')}</h4>
-                            <p>${escapeHtml(story.body || '')}</p>
-                            <div class="daily-pdf-source">${escapeHtml(story.sourceName || '来源')}: ${escapeHtml(story.sourceUrl || '')}</div>
-                        </article>
-                    `).join('')}
+                    ${renderStories(firstPageStories)}
                 </section>
             </article>
+            ${extraPages.map((pageStories, pageIndex) => `
+                <article class="daily-pdf-paper daily-pdf-page daily-pdf-continuation">
+                    <header class="daily-pdf-continuation-head">
+                        <span>人工智能时代日报</span>
+                        <span>续刊第 ${pageIndex + 2} 版</span>
+                        <span>${escapeHtml(dateText)}</span>
+                    </header>
+                    <section class="daily-pdf-stories">
+                        ${renderStories(pageStories)}
+                    </section>
+                </article>
+            `).join('')}
         `;
         document.body.appendChild(stage);
         return stage;
+    };
+
+    const renderStories = (stories) => stories.map((story) => `
+        <article class="daily-pdf-story">
+            <p class="daily-pdf-story-category">${escapeHtml(story.category || '更新')}</p>
+            <h4>${escapeHtml(story.title || '未命名')}</h4>
+            <p>${escapeHtml(story.body || '')}</p>
+            <div class="daily-pdf-source">${escapeHtml(story.sourceName || '来源')}: ${escapeHtml(story.sourceUrl || '')}</div>
+        </article>
+    `).join('');
+
+    const chunk = (items, size) => {
+        const pages = [];
+        for (let index = 0; index < items.length; index += size) {
+            pages.push(items.slice(index, index + size));
+        }
+        return pages;
     };
 
     const downloadDailyPdf = async (button) => {
@@ -164,18 +203,23 @@
 
         try {
             await document.fonts?.ready;
-            const canvas = await window.html2canvas(stage, {
-                backgroundColor: '#FFF7E8',
-                scale: 2,
-                useCORS: true,
-            });
-
-            const imageData = canvas.toDataURL('image/jpeg', 0.94);
             const { jsPDF } = window.jspdf;
             const pdf = new jsPDF({ orientation: 'portrait', unit: 'pt', format: 'a4' });
             const pageWidth = pdf.internal.pageSize.getWidth();
             const pageHeight = pdf.internal.pageSize.getHeight();
-            pdf.addImage(imageData, 'JPEG', 0, 0, pageWidth, pageHeight);
+            const pages = Array.from(stage.querySelectorAll('.daily-pdf-page'));
+
+            for (const [index, page] of pages.entries()) {
+                const canvas = await window.html2canvas(page, {
+                    backgroundColor: '#FFF7E8',
+                    scale: 2,
+                    useCORS: true,
+                });
+                const imageData = canvas.toDataURL('image/jpeg', 0.94);
+                if (index > 0) pdf.addPage();
+                pdf.addImage(imageData, 'JPEG', 0, 0, pageWidth, pageHeight);
+            }
+
             pdf.save(`ai-daily-${formatDate(daily.date).replaceAll('/', '-')}.pdf`);
         } finally {
             stage.remove();

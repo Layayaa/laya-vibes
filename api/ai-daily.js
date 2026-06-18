@@ -1,7 +1,7 @@
 const DEEPSEEK_API_URL = 'https://api.deepseek.com/chat/completions';
 
 const DEFAULT_FEEDS = [
-  { name: 'Hacker News AI', type: 'json', url: 'https://hn.algolia.com/api/v1/search_by_date?query=AI&tags=story&hitsPerPage=12' },
+  { name: 'Hacker News AI', type: 'json', url: 'https://hn.algolia.com/api/v1/search_by_date?query=AI&tags=story&hitsPerPage=24' },
   { name: 'TechCrunch AI', type: 'rss', url: 'https://techcrunch.com/category/artificial-intelligence/feed/' },
   { name: 'The Verge AI', type: 'rss', url: 'https://www.theverge.com/rss/ai-artificial-intelligence/index.xml' },
   { name: 'MIT Technology Review', type: 'rss', url: 'https://www.technologyreview.com/feed/' },
@@ -105,7 +105,7 @@ async function collectSourceItems() {
   return dedupeItems(items)
     .filter(isAiRelated)
     .sort((a, b) => new Date(b.publishedAt || 0) - new Date(a.publishedAt || 0))
-    .slice(0, 18);
+    .slice(0, 36);
 }
 
 function getFeeds() {
@@ -202,15 +202,15 @@ function buildPrompt(items) {
     `来源：${item.sourceName}`,
     `链接：${item.sourceUrl}`,
     `时间：${item.publishedAt || 'unknown'}`,
-    `摘要：${truncate(item.body || item.title, 180)}`,
+    `摘要：${truncate(item.body || item.title, 260)}`,
   ].join('\n')).join('\n\n');
 
   return [
     '请基于以下真实来源材料，生成一份中文「AI 时代日报」。',
     '输出 JSON，字段必须是 date, headline, summary, signals, stories。',
-    'signals 是 3 到 5 条字符串。',
-    'stories 是 4 到 6 条对象，每条包含 category, title, body, sourceName, sourceUrl。',
-    'body 控制在 70 个中文字符以内。',
+    'signals 是 5 到 7 条字符串，覆盖行业趋势、产品发布、开发者工具、资本/公司动态、风险或监管。',
+    'stories 是 8 到 12 条对象，每条包含 category, title, body, sourceName, sourceUrl。',
+    'body 控制在 100 到 140 个中文字符，必须讲清楚事件、影响和为什么值得关注。',
     'sourceName 和 sourceUrl 必须从下方来源材料中选择，不能编造。',
     '',
     sourceText,
@@ -236,13 +236,13 @@ function normalizeDaily(daily, sourceItems) {
     date: daily.date || new Date().toISOString(),
     headline: daily.headline || fallback.headline,
     summary: daily.summary || fallback.summary,
-    signals: Array.isArray(daily.signals) && daily.signals.length ? daily.signals.slice(0, 5) : fallback.signals,
-    stories: stories.length ? stories.slice(0, 6).map((story, index) => {
+    signals: Array.isArray(daily.signals) && daily.signals.length ? daily.signals.slice(0, 7) : fallback.signals,
+    stories: stories.length ? stories.slice(0, 12).map((story, index) => {
       const source = findSource(story, sourceItems) || sourceItems[index % sourceItems.length] || {};
       return {
         category: story.category || 'AI',
         title: story.title || source.title || 'AI 行业动态',
-        body: story.body || truncate(source.body || source.title || '', 70),
+        body: story.body || truncate(source.body || source.title || '', 130),
         sourceName: story.sourceName || source.sourceName || 'Source',
         sourceUrl: story.sourceUrl || source.sourceUrl || '#daily',
       };
