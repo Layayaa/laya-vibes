@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
@@ -74,23 +74,52 @@
                 <figure class="pixel-companion-card" data-pixel-companion>
                     <div class="pixel-stage" aria-label="Pixel Laya，可动像素小助手" role="img">
                         <div class="pixel-sun"></div>
-                        <div class="pixel-shadow"></div>
-                        <div class="pixel-character">
-                            <span class="pixel-hair hair-back"></span>
-                            <span class="pixel-head"></span>
-                            <span class="pixel-hair hair-bangs"></span>
-                            <span class="pixel-eye eye-left"></span>
-                            <span class="pixel-eye eye-right"></span>
-                            <span class="pixel-cheek cheek-left"></span>
-                            <span class="pixel-cheek cheek-right"></span>
-                            <span class="pixel-body"></span>
-                            <span class="pixel-scarf"></span>
-                            <span class="pixel-arm arm-left"></span>
-                            <span class="pixel-arm arm-right"></span>
-                            <span class="pixel-laptop"></span>
-                            <span class="pixel-leg leg-left"></span>
-                            <span class="pixel-leg leg-right"></span>
+                        <div class="pixel-thoughts" aria-hidden="true">
+                            <span></span>
+                            <span></span>
+                            <span></span>
                         </div>
+                        <div class="pixel-shadow"></div>
+                        <svg class="pixel-character" viewBox="0 0 128 192" aria-hidden="true">
+                            <g class="pc-body">
+                                <rect class="pc-leg pc-leg-left" x="45" y="137" width="16" height="34" />
+                                <rect class="pc-leg pc-leg-right" x="69" y="137" width="16" height="34" />
+                                <rect class="pc-shoe" x="39" y="168" width="24" height="10" />
+                                <rect class="pc-shoe" x="67" y="168" width="24" height="10" />
+                                <rect class="pc-shirt" x="39" y="96" width="50" height="48" />
+                                <rect class="pc-shirt-light" x="39" y="96" width="18" height="48" />
+                                <rect class="pc-scarf" x="35" y="91" width="58" height="10" />
+                                <rect class="pc-scarf-tail" x="82" y="101" width="12" height="30" />
+                            </g>
+                            <g class="pc-arm pc-arm-left">
+                                <rect class="pc-skin" x="24" y="103" width="15" height="42" />
+                            </g>
+                            <g class="pc-arm pc-arm-right">
+                                <rect class="pc-skin" x="89" y="101" width="15" height="38" />
+                                <rect class="pc-hand" x="94" y="134" width="14" height="12" />
+                            </g>
+                            <g class="pc-laptop">
+                                <rect class="pc-laptop-screen" x="31" y="117" width="55" height="36" />
+                                <rect class="pc-laptop-base" x="25" y="153" width="68" height="10" />
+                                <rect class="pc-laptop-glow" x="52" y="128" width="10" height="8" />
+                            </g>
+                            <g class="pc-head">
+                                <rect class="pc-neck" x="56" y="82" width="16" height="16" />
+                                <rect class="pc-face" x="34" y="35" width="60" height="54" />
+                                <rect class="pc-ear" x="26" y="53" width="8" height="24" />
+                                <rect class="pc-ear" x="94" y="53" width="8" height="24" />
+                                <rect class="pc-hair-back" x="27" y="25" width="74" height="48" />
+                                <rect class="pc-hair-side" x="25" y="62" width="14" height="43" />
+                                <rect class="pc-hair-side" x="89" y="62" width="14" height="43" />
+                                <rect class="pc-bang pc-bang-one" x="34" y="30" width="26" height="23" />
+                                <rect class="pc-bang pc-bang-two" x="55" y="34" width="35" height="21" />
+                                <rect class="pc-eye pc-eye-left" x="49" y="63" width="6" height="7" />
+                                <rect class="pc-eye pc-eye-right" x="73" y="63" width="6" height="7" />
+                                <rect class="pc-cheek" x="42" y="75" width="8" height="7" />
+                                <rect class="pc-cheek" x="78" y="75" width="8" height="7" />
+                                <rect class="pc-mouth" x="61" y="78" width="8" height="4" />
+                            </g>
+                        </svg>
                     </div>
                     <figcaption>
                         <strong>Pixel Laya</strong>
@@ -99,7 +128,7 @@
                 </figure>
                 <article class="mini-index chalk-card">
                     <p class="paper-label">快速索引</p>
-                    <span>3 份项目档案</span>
+                    <span>4 份项目档案</span>
                     <span>6 组星标信号</span>
                     <span>15+ 个能力标签</span>
                 </article>
@@ -114,7 +143,29 @@
 
             <article class="case-board case-board-wide" data-case>
                 <div class="case-copy">
-                    <p class="sticker sticker-purple">项目 001 / Web 系统</p>
+                    <p class="sticker sticker-lime">项目 001 / 企业级 AI 系统</p>
+                    <h3>知语 AI · 企业第二大脑智能问答助手</h3>
+                    <p>企业级知识库 RAG 检索增强问答与实时语音对话平台，从知识库、权限、审计、向量检索到业务动作，构建一套可部署、可演示、可扩展的 AI 应用底座。</p>
+                    <div class="tag-row">
+                        <span>Spring Boot 3.5</span><span>Java 17</span><span>React</span><span>TypeScript</span><span>MySQL</span><span>Redis</span><span>RabbitMQ</span><span>Qdrant</span><span>MinIO</span><span>Docker</span>
+                    </div>
+                    <p class="contribution">贡献：系统方案设计、前后端模块开发、RAG 管线、权限与多租户、安全治理、Docker 演示部署与产品文档整理。</p>
+                </div>
+                <div class="evidence-slider system-evidence" data-evidence-slider>
+                    <button class="evidence-nav evidence-prev" type="button" aria-label="上一张项目截图">‹</button>
+                    <div class="evidence-track">
+                        <img src="assets/zwskchat/chat-rag.png" alt="知语 AI 对话页面，展示 RAG 问答与行业 AI 知识助手">
+                        <img src="assets/zwskchat/assistant-gallery.png" alt="知语 AI 助手广场，展示多个场景化回答助手">
+                        <img src="assets/zwskchat/knowledge-base.png" alt="知语 AI 知识库页面，展示知识库列表与文档入口">
+                        <img src="assets/zwskchat/workbench.png" alt="知语 AI 工作台页面，展示快捷入口与智能助手区域">
+                    </div>
+                    <button class="evidence-nav evidence-next" type="button" aria-label="下一张项目截图">›</button>
+                </div>
+            </article>
+
+            <article class="case-board case-board-wide" data-case>
+                <div class="case-copy">
+                    <p class="sticker sticker-purple">项目 002 / Web 系统</p>
                     <h3>工程材料询价系统</h3>
                     <p>企业内部历史询价复用系统，帮助工程师更快检索历史报价、复用上传资料，并给管理侧提供统计视角。</p>
                     <div class="tag-row">
@@ -122,42 +173,56 @@
                     </div>
                     <p class="contribution">贡献：流程梳理、前端页面、查询筛选逻辑、统计与部署协作。</p>
                 </div>
-                <div class="evidence-strip">
-                    <img src="项目截图/微信图片_20260604105241_752_152.png" alt="工程材料询价系统智能查询界面">
-                    <img src="项目截图/微信图片_20260604105241_753_152.png" alt="工程材料询价系统条件筛选界面">
-                    <img src="项目截图/微信图片_20260604105241_754_152.png" alt="工程材料询价系统统计分析界面">
+                <div class="evidence-slider" data-evidence-slider>
+                    <button class="evidence-nav evidence-prev" type="button" aria-label="上一张项目截图">‹</button>
+                    <div class="evidence-track">
+                        <img src="项目截图/微信图片_20260604105241_752_152.png" alt="工程材料询价系统智能查询界面">
+                        <img src="项目截图/微信图片_20260604105241_753_152.png" alt="工程材料询价系统条件筛选界面">
+                        <img src="项目截图/微信图片_20260604105241_754_152.png" alt="工程材料询价系统统计分析界面">
+                    </div>
+                    <button class="evidence-nav evidence-next" type="button" aria-label="下一张项目截图">›</button>
                 </div>
             </article>
 
             <div class="case-pair">
                 <article class="case-board" data-case>
                     <div class="case-copy">
-                        <p class="sticker sticker-lime">项目 002 / AI 应用</p>
+                        <p class="sticker sticker-lime">项目 003 / AI 应用</p>
                         <h3>AI 实习推荐系统</h3>
                         <p>围绕简历分析和岗位推荐做的 AI 应用，把上传、解析、技能标签和推荐结果串成一条完整流程。</p>
                         <div class="tag-row">
                             <span>Python</span><span>Dify</span><span>Weaviate</span><span>Docker</span>
                         </div>
                     </div>
-                    <div class="evidence-stack">
-                        <img src="项目截图/微信图片_20260604110348_755_152.png" alt="AI 实习推荐系统简历分析界面">
-                        <img src="项目截图/微信图片_20260604110348_756_152.png" alt="AI 实习推荐系统岗位推荐界面">
+                    <div class="evidence-slider compact" data-evidence-slider>
+                        <button class="evidence-nav evidence-prev" type="button" aria-label="上一张项目截图">‹</button>
+                        <div class="evidence-track">
+                            <img src="项目截图/微信图片_20260604110348_755_152.png" alt="AI 实习推荐系统简历分析界面">
+                            <img src="项目截图/微信图片_20260604110348_756_152.png" alt="AI 实习推荐系统岗位推荐界面">
+                            <img src="项目截图/微信图片_20260604110348_757_152.png" alt="AI 实习推荐系统搜索结果界面">
+                        </div>
+                        <button class="evidence-nav evidence-next" type="button" aria-label="下一张项目截图">›</button>
                     </div>
                 </article>
 
                 <article class="case-board" data-case>
                     <div class="case-copy">
-                        <p class="sticker sticker-purple">项目 003 / 小程序</p>
+                        <p class="sticker sticker-purple">项目 004 / 小程序</p>
                         <h3>旌灵云仓小助手</h3>
                         <p>面向德阳 OPC 社区的小程序，整合会议空间预约辅助、活动信息、通知提醒与反馈提交。</p>
                         <div class="tag-row">
                             <span>微信小程序</span><span>JavaScript</span><span>CloudBase</span><span>云函数</span>
                         </div>
                     </div>
-                    <div class="phone-collage">
-                        <img src="assets/jingling-home.jpg" alt="旌灵云仓小助手首页">
-                        <img src="assets/jingling-booking.jpg" alt="旌灵云仓小助手预约办理">
-                        <img src="assets/jingling-profile.jpg" alt="旌灵云仓小助手我的预约">
+                    <div class="evidence-slider compact phone" data-evidence-slider>
+                        <button class="evidence-nav evidence-prev" type="button" aria-label="上一张项目截图">‹</button>
+                        <div class="evidence-track">
+                            <img src="assets/jingling-home.jpg" alt="旌灵云仓小助手首页">
+                            <img src="assets/jingling-booking.jpg" alt="旌灵云仓小助手预约办理">
+                            <img src="assets/jingling-profile.jpg" alt="旌灵云仓小助手我的预约">
+                            <img src="assets/jingling-activities.jpg" alt="旌灵云仓小助手活动列表">
+                        </div>
+                        <button class="evidence-nav evidence-next" type="button" aria-label="下一张项目截图">›</button>
                     </div>
                 </article>
             </div>
@@ -216,5 +281,3 @@
     </main>
 </body>
 </html>
-
-

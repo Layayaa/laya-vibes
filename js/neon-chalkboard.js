@@ -44,6 +44,32 @@
             tag.style.setProperty('--r', `${rotate}deg`);
         });
 
+        document.querySelectorAll('[data-evidence-slider]').forEach((slider) => {
+            const track = slider.querySelector('.evidence-track');
+            const previousButton = slider.querySelector('.evidence-prev');
+            const nextButton = slider.querySelector('.evidence-next');
+            if (!track || !previousButton || !nextButton) return;
+
+            const updateButtons = () => {
+                const maxScroll = Math.max(0, track.scrollWidth - track.clientWidth - 2);
+                previousButton.disabled = track.scrollLeft <= 2;
+                nextButton.disabled = track.scrollLeft >= maxScroll;
+            };
+
+            const moveSlide = (direction) => {
+                track.scrollBy({
+                    left: direction * track.clientWidth,
+                    behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth'
+                });
+            };
+
+            previousButton.addEventListener('click', () => moveSlide(-1));
+            nextButton.addEventListener('click', () => moveSlide(1));
+            track.addEventListener('scroll', updateButtons, { passive: true });
+            window.addEventListener('resize', updateButtons);
+            updateButtons();
+        });
+
         const cardDesk = document.querySelector('.draw-grid');
         const drawCards = Array.from(document.querySelectorAll('.draw-card'));
         const shuffleStarsButton = document.querySelector('[data-shuffle-stars]');
@@ -237,14 +263,48 @@
         updateStarCount();
 
         const pixelCompanion = document.querySelector('[data-pixel-companion]');
+        const pixelStage = pixelCompanion?.querySelector('.pixel-stage');
+        let pixelMoodTimer = null;
+
+        const setPixelMood = (mood, duration = 900) => {
+            if (!pixelCompanion) return;
+            window.clearTimeout(pixelMoodTimer);
+            pixelCompanion.classList.remove('is-looking', 'is-coding', 'is-waving');
+            if (mood) pixelCompanion.classList.add(mood);
+            pixelMoodTimer = window.setTimeout(() => {
+                pixelCompanion.classList.remove('is-looking', 'is-coding', 'is-waving');
+            }, duration);
+        };
+
+        pixelStage?.addEventListener('pointermove', (event) => {
+            if (!window.matchMedia('(pointer: fine)').matches) return;
+            const rect = pixelStage.getBoundingClientRect();
+            const x = (event.clientX - rect.left) / rect.width - 0.5;
+            const y = (event.clientY - rect.top) / rect.height - 0.5;
+            pixelStage.classList.add('is-tracking');
+            pixelStage.style.setProperty('--look-x', `${Math.round(x * 10)}px`);
+            pixelStage.style.setProperty('--look-y', `${Math.round(y * 8)}px`);
+            pixelStage.style.setProperty('--eye-x', `${Math.round(x * 3)}px`);
+            pixelStage.style.setProperty('--eye-y', `${Math.round(y * 2)}px`);
+        }, { passive: true });
+
+        pixelStage?.addEventListener('pointerleave', () => {
+            pixelStage.classList.remove('is-tracking');
+            pixelStage.style.removeProperty('--look-x');
+            pixelStage.style.removeProperty('--look-y');
+            pixelStage.style.removeProperty('--eye-x');
+            pixelStage.style.removeProperty('--eye-y');
+        });
+
+        pixelCompanion?.addEventListener('pointerenter', () => setPixelMood('is-waving', 1300));
+        pixelCompanion?.addEventListener('click', () => setPixelMood('is-waving', 1300));
+
         document.querySelectorAll('[data-case]').forEach((caseCard) => {
-            caseCard.addEventListener('pointerenter', () => pixelCompanion?.classList.add('is-looking'));
-            caseCard.addEventListener('pointerleave', () => pixelCompanion?.classList.remove('is-looking'));
+            caseCard.addEventListener('pointerenter', () => setPixelMood('is-looking', 1600));
         });
 
         document.querySelectorAll('.skill-stickers span, .repo-card').forEach((workItem) => {
-            workItem.addEventListener('pointerenter', () => pixelCompanion?.classList.add('is-coding'));
-            workItem.addEventListener('pointerleave', () => pixelCompanion?.classList.remove('is-coding'));
+            workItem.addEventListener('pointerenter', () => setPixelMood('is-coding', 1300));
         });
 
         const cards = document.querySelectorAll('.case-board, .paper-card, .portrait-card, .pixel-companion-card, .chalk-card, .contact-card');
@@ -302,18 +362,18 @@
             });
         });
 
-        gsap.utils.toArray('.evidence-strip img, .evidence-stack img, .phone-collage img').forEach((image, index) => {
+        gsap.utils.toArray('.evidence-track img').forEach((image, index) => {
             gsap.from(image, {
                 scrollTrigger: {
                     trigger: image,
                     start: 'top 82%',
                     once: true
                 },
-                scale: 0.86,
-                rotate: index % 2 ? 6 : -6,
+                scale: 0.92,
                 opacity: 0,
                 duration: 0.75,
-                ease: 'back.out(1.4)'
+                ease: 'power3.out',
+                delay: index * 0.04
             });
         });
     });

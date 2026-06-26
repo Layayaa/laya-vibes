@@ -534,6 +534,8 @@ button,
         #181818;
     background-size: 16px 16px, 16px 16px, auto, auto;
     image-rendering: pixelated;
+    --look-x: 0px;
+    --look-y: 0px;
 }
 
 .pixel-sun {
@@ -554,177 +556,172 @@ button,
     position: absolute;
     left: 50%;
     bottom: 54px;
-    width: 132px;
-    height: 18px;
+    width: 104px;
+    height: 14px;
     background: rgba(0,0,0,0.42);
     transform: translateX(-50%);
     clip-path: polygon(8% 20%, 92% 20%, 100% 50%, 92% 80%, 8% 80%, 0 50%);
     animation: pixel-shadow-breathe 1.4s steps(2, end) infinite;
 }
 
-.pixel-character {
-    --px: 8px;
-    position: relative;
-    width: calc(var(--px) * 18);
-    height: calc(var(--px) * 25);
-    transform: translateY(8px) scale(1.08);
-    animation: pixel-idle 1.4s steps(2, end) infinite;
-}
-
-.pixel-character span {
+.pixel-thoughts {
     position: absolute;
-    display: block;
-    image-rendering: pixelated;
+    left: 24px;
+    top: 34px;
+    display: grid;
+    grid-template-columns: repeat(3, 12px);
+    gap: 8px;
+    opacity: 0.78;
 }
 
-.pixel-head {
-    left: calc(var(--px) * 5);
-    top: calc(var(--px) * 5);
-    width: calc(var(--px) * 8);
-    height: calc(var(--px) * 8);
-    background: #F2B38E;
-    box-shadow:
-        calc(var(--px) * -1) calc(var(--px) * 1) 0 #F2B38E,
-        calc(var(--px) * 8) calc(var(--px) * 1) 0 #D98B72,
-        0 calc(var(--px) * 8) 0 #D98B72,
-        calc(var(--px) * 1) calc(var(--px) * 8) 0 #D98B72,
-        calc(var(--px) * 2) calc(var(--px) * 8) 0 #D98B72,
-        calc(var(--px) * 3) calc(var(--px) * 8) 0 #D98B72,
-        calc(var(--px) * 4) calc(var(--px) * 8) 0 #D98B72,
-        calc(var(--px) * 5) calc(var(--px) * 8) 0 #D98B72,
-        calc(var(--px) * 6) calc(var(--px) * 8) 0 #D98B72;
-}
-
-.pixel-hair {
-    background: #3A241E;
-}
-
-.hair-back {
-    left: calc(var(--px) * 4);
-    top: calc(var(--px) * 4);
-    width: calc(var(--px) * 10);
-    height: calc(var(--px) * 7);
-    box-shadow:
-        calc(var(--px) * -1) calc(var(--px) * 3) 0 #3A241E,
-        calc(var(--px) * 9) calc(var(--px) * 3) 0 #2B1815,
-        calc(var(--px) * 2) calc(var(--px) * -1) 0 #5A352C,
-        calc(var(--px) * 5) calc(var(--px) * -1) 0 #5A352C;
-}
-
-.hair-bangs {
-    left: calc(var(--px) * 5);
-    top: calc(var(--px) * 4);
-    width: calc(var(--px) * 8);
-    height: calc(var(--px) * 3);
-    background: #5A352C;
-    box-shadow:
-        calc(var(--px) * -1) calc(var(--px) * 1) 0 #5A352C,
-        calc(var(--px) * 3) calc(var(--px) * 2) 0 #3A241E,
-        calc(var(--px) * 7) calc(var(--px) * 1) 0 #3A241E;
-}
-
-.pixel-eye {
-    top: calc(var(--px) * 9);
-    width: var(--px);
-    height: var(--px);
-    background: #151515;
-    animation: pixel-blink 4.4s steps(1, end) infinite;
-}
-
-.eye-left { left: calc(var(--px) * 7); }
-.eye-right { left: calc(var(--px) * 11); }
-
-.pixel-cheek {
-    top: calc(var(--px) * 11);
-    width: var(--px);
-    height: var(--px);
-    background: #FF8BAA;
-}
-
-.cheek-left { left: calc(var(--px) * 6); }
-.cheek-right { left: calc(var(--px) * 12); }
-
-.pixel-body {
-    left: calc(var(--px) * 5);
-    top: calc(var(--px) * 14);
-    width: calc(var(--px) * 8);
-    height: calc(var(--px) * 6);
-    background: var(--purple);
-    box-shadow:
-        calc(var(--px) * 1) calc(var(--px) * 1) 0 #A855F7,
-        calc(var(--px) * 6) calc(var(--px) * 1) 0 #4B1FC8,
-        calc(var(--px) * 0) calc(var(--px) * 6) 0 #4B1FC8,
-        calc(var(--px) * 1) calc(var(--px) * 6) 0 #4B1FC8,
-        calc(var(--px) * 6) calc(var(--px) * 6) 0 #4B1FC8,
-        calc(var(--px) * 7) calc(var(--px) * 6) 0 #4B1FC8;
-}
-
-.pixel-scarf {
-    left: calc(var(--px) * 5);
-    top: calc(var(--px) * 14);
-    width: calc(var(--px) * 8);
-    height: var(--px);
+.pixel-thoughts span {
+    width: 12px;
+    height: 12px;
     background: var(--lime);
     box-shadow:
-        calc(var(--px) * 7) calc(var(--px) * 1) 0 var(--lime),
-        calc(var(--px) * 7) calc(var(--px) * 2) 0 #85C900;
+        0 0 0 3px rgba(247,243,234,0.18),
+        0 0 18px rgba(183,255,0,0.28);
+    animation: pixel-thought-pop 2.4s steps(4, end) infinite;
 }
 
-.pixel-arm {
-    top: calc(var(--px) * 15);
-    width: calc(var(--px) * 2);
-    height: calc(var(--px) * 6);
-    background: #F2B38E;
+.pixel-thoughts span:nth-child(2) {
+    background: var(--pink);
+    animation-delay: 0.22s;
 }
 
-.arm-left {
-    left: calc(var(--px) * 3);
-    box-shadow: 0 calc(var(--px) * 2) 0 #D98B72;
-    animation: pixel-left-arm 1.4s steps(2, end) infinite;
+.pixel-thoughts span:nth-child(3) {
+    background: var(--purple);
+    animation-delay: 0.44s;
 }
 
-.arm-right {
-    left: calc(var(--px) * 13);
-    transform-origin: top left;
-    animation: pixel-wave 1.1s steps(3, end) infinite;
+.pixel-character {
+    position: relative;
+    z-index: 1;
+    width: min(190px, 66%);
+    height: auto;
+    overflow: visible;
+    transform: translate(var(--look-x), var(--look-y)) translateY(8px);
+    animation: pixel-idle 1.8s steps(4, end) infinite;
+    image-rendering: pixelated;
+    shape-rendering: crispEdges;
 }
 
-.pixel-laptop {
-    left: calc(var(--px) * 6);
-    top: calc(var(--px) * 17);
-    width: calc(var(--px) * 7);
-    height: calc(var(--px) * 4);
-    background: #BEB9AD;
-    box-shadow:
-        calc(var(--px) * 1) calc(var(--px) * 1) 0 #F7F3EA,
-        calc(var(--px) * 3) calc(var(--px) * 1) 0 var(--lime),
-        calc(var(--px) * -1) calc(var(--px) * 4) 0 #76716A,
-        0 calc(var(--px) * 4) 0 #76716A,
-        calc(var(--px) * 1) calc(var(--px) * 4) 0 #76716A,
-        calc(var(--px) * 2) calc(var(--px) * 4) 0 #76716A,
-        calc(var(--px) * 3) calc(var(--px) * 4) 0 #76716A,
-        calc(var(--px) * 4) calc(var(--px) * 4) 0 #76716A,
-        calc(var(--px) * 5) calc(var(--px) * 4) 0 #76716A,
-        calc(var(--px) * 6) calc(var(--px) * 4) 0 #76716A,
-        calc(var(--px) * 7) calc(var(--px) * 4) 0 #76716A;
-    animation: pixel-laptop-glow 1.8s steps(2, end) infinite;
+.pixel-character * {
+    vector-effect: non-scaling-stroke;
 }
 
-.pixel-leg {
-    top: calc(var(--px) * 21);
-    width: calc(var(--px) * 3);
-    height: calc(var(--px) * 3);
-    background: #2C2E3E;
+.pc-face,
+.pc-ear,
+.pc-neck,
+.pc-skin,
+.pc-hand {
+    fill: #F2A582;
+    stroke: #1A1412;
+    stroke-width: 4;
 }
 
-.leg-left {
-    left: calc(var(--px) * 5);
-    animation: pixel-leg-left 1.4s steps(2, end) infinite;
+.pc-ear,
+.pc-neck,
+.pc-hand {
+    fill: #D9896F;
 }
 
-.leg-right {
-    left: calc(var(--px) * 10);
-    animation: pixel-leg-right 1.4s steps(2, end) infinite;
+.pc-hair-back,
+.pc-hair-side {
+    fill: #4A2A23;
+    stroke: #1A1412;
+    stroke-width: 4;
+}
+
+.pc-bang {
+    fill: #2F1B18;
+    stroke: #1A1412;
+    stroke-width: 4;
+    animation: pixel-bangs-sway 1.8s steps(4, end) infinite;
+}
+
+.pc-eye {
+    fill: #111;
+    transform: translate(var(--eye-x, 0), var(--eye-y, 0));
+    animation: pixel-svg-blink 4.4s steps(1, end) infinite;
+}
+
+.pc-cheek {
+    fill: #FF75A8;
+}
+
+.pc-mouth {
+    fill: #7D3A38;
+}
+
+.pc-shirt {
+    fill: #7134FF;
+    stroke: #1A1412;
+    stroke-width: 4;
+}
+
+.pc-shirt-light {
+    fill: #9A55FF;
+}
+
+.pc-scarf,
+.pc-scarf-tail {
+    fill: var(--lime);
+    stroke: #1A1412;
+    stroke-width: 4;
+    animation: pixel-scarf-sway 0.9s steps(2, end) infinite;
+}
+
+.pc-leg {
+    fill: #2C3145;
+    stroke: #1A1412;
+    stroke-width: 4;
+}
+
+.pc-shoe {
+    fill: #141824;
+    stroke: #1A1412;
+    stroke-width: 4;
+}
+
+.pc-laptop {
+    animation: pixel-laptop-glow 1.8s steps(3, end) infinite;
+}
+
+.pc-laptop-screen {
+    fill: #ECE8D8;
+    stroke: #1A1412;
+    stroke-width: 4;
+}
+
+.pc-laptop-base {
+    fill: #A7A39A;
+    stroke: #1A1412;
+    stroke-width: 4;
+}
+
+.pc-laptop-glow {
+    fill: var(--lime);
+}
+
+.pc-arm-left {
+    animation: pixel-left-arm 1.8s steps(4, end) infinite;
+    transform-origin: 36px 104px;
+}
+
+.pc-arm-right {
+    animation: pixel-wave 3.2s steps(5, end) infinite;
+    transform-origin: 92px 104px;
+}
+
+.pc-leg-left {
+    animation: pixel-leg-left 1.8s steps(4, end) infinite;
+    transform-origin: 53px 137px;
+}
+
+.pc-leg-right {
+    animation: pixel-leg-right 1.8s steps(4, end) infinite;
+    transform-origin: 77px 137px;
 }
 
 .pixel-companion-card figcaption {
@@ -748,12 +745,45 @@ button,
     animation: pixel-type 0.46s steps(2, end) infinite;
 }
 
-.pixel-companion-card.is-coding .pixel-laptop {
+.pixel-companion-card.is-coding .pc-arm-right {
+    animation: pixel-type 0.46s steps(2, end) infinite;
+}
+
+.pixel-companion-card.is-coding .pixel-laptop,
+.pixel-companion-card.is-coding .pc-laptop {
     animation: pixel-laptop-glow 0.7s steps(2, end) infinite;
 }
 
 .pixel-companion-card.is-looking .pixel-character {
-    animation: pixel-look 1.1s steps(2, end) infinite;
+    animation: pixel-look 1.05s steps(3, end) infinite;
+}
+
+.pixel-companion-card.is-looking .pixel-eye {
+    --eye-x: 2px;
+}
+
+.pixel-companion-card.is-looking .pc-eye {
+    --eye-x: 2px;
+}
+
+.pixel-companion-card.is-waving .arm-right {
+    animation: pixel-big-wave 0.72s steps(4, end) 2;
+}
+
+.pixel-companion-card.is-waving .pc-arm-right {
+    animation: pixel-big-wave 0.72s steps(4, end) 2;
+}
+
+.pixel-companion-card.is-waving .pixel-character {
+    animation: pixel-hop 0.72s steps(4, end) 2;
+}
+
+.pixel-companion-card.is-waving .pixel-thoughts span {
+    animation-duration: 0.72s;
+}
+
+.pixel-stage.is-tracking .pixel-character {
+    transition: transform 0.08s steps(2, end);
 }
 
 .mini-index {
@@ -833,6 +863,214 @@ button,
 .evidence-strip {
     position: relative;
     min-height: 330px;
+}
+
+.evidence-slider {
+    position: relative;
+    min-width: 0;
+    border: 4px solid var(--chalk-white);
+    border-radius: 12px;
+    background: rgba(0,0,0,0.26);
+    box-shadow: 10px 10px 0 rgba(0,0,0,0.3);
+    overflow: hidden;
+}
+
+.evidence-slider.compact {
+    min-height: 320px;
+}
+
+.evidence-track {
+    display: flex;
+    gap: 0;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    scrollbar-width: none;
+}
+
+.evidence-track::-webkit-scrollbar {
+    display: none;
+}
+
+.evidence-track img {
+    flex: 0 0 100%;
+    width: 100%;
+    height: clamp(320px, 38vw, 520px);
+    object-fit: contain;
+    object-position: center;
+    scroll-snap-align: center;
+    background:
+        linear-gradient(135deg, rgba(183,255,0,0.08), transparent 42%),
+        #101010;
+    padding: 12px;
+}
+
+.evidence-slider.compact .evidence-track img {
+    height: 320px;
+}
+
+.evidence-slider.phone .evidence-track img {
+    object-fit: contain;
+    background: #111;
+}
+
+.system-evidence .evidence-track img {
+    object-fit: contain;
+    background:
+        linear-gradient(135deg, rgba(183,255,0,0.06), transparent 36%),
+        rgba(245,248,252,0.96);
+    padding: 10px;
+}
+
+.evidence-track .evidence-card {
+    flex: 0 0 100%;
+    min-height: clamp(320px, 38vw, 520px);
+    padding: clamp(24px, 4vw, 42px);
+    scroll-snap-align: center;
+    background:
+        linear-gradient(135deg, rgba(183,255,0,0.12), transparent 36%),
+        radial-gradient(circle at 86% 18%, rgba(255,77,232,0.2), transparent 26%),
+        #101010;
+    border-left: 1px solid rgba(255,255,255,0.16);
+    color: var(--chalk-white);
+}
+
+.evidence-kicker {
+    display: inline-flex;
+    margin: 0 0 14px;
+    padding: 6px 10px;
+    border: 2px solid var(--lime);
+    color: var(--lime);
+    font-family: var(--font-display);
+    font-size: 11px;
+    letter-spacing: 0;
+    background: rgba(0,0,0,0.38);
+}
+
+.evidence-card h4 {
+    max-width: 620px;
+    margin: 0 0 18px;
+    color: var(--chalk-white);
+    font-family: var(--font-display);
+    font-size: clamp(26px, 4vw, 48px);
+    line-height: 1.05;
+}
+
+.evidence-card p,
+.evidence-card li {
+    max-width: 680px;
+    color: rgba(247,247,239,0.82);
+    font-size: 15px;
+    line-height: 1.8;
+}
+
+.system-flow {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+    margin: 28px 0 22px;
+}
+
+.system-flow span,
+.capability-matrix span {
+    border: 2px solid rgba(247,247,239,0.72);
+    border-radius: 8px;
+    background: rgba(0,0,0,0.34);
+    box-shadow: 5px 5px 0 rgba(0,0,0,0.22);
+}
+
+.system-flow span {
+    padding: 10px 12px;
+    color: var(--lime);
+    font-family: var(--font-display);
+    font-size: 12px;
+}
+
+.system-flow i {
+    width: 26px;
+    height: 2px;
+    background: var(--purple);
+    box-shadow: 0 0 12px rgba(255,77,232,0.6);
+}
+
+.capability-matrix {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 12px;
+    margin-top: 28px;
+}
+
+.capability-matrix span {
+    min-height: 64px;
+    display: grid;
+    place-items: center;
+    padding: 10px;
+    color: var(--chalk-white);
+    text-align: center;
+    font-weight: 800;
+}
+
+.delivery-card ul {
+    display: grid;
+    gap: 12px;
+    margin: 24px 0 0;
+    padding: 0;
+    list-style: none;
+}
+
+.delivery-card li {
+    position: relative;
+    padding-left: 20px;
+}
+
+.delivery-card li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0.82em;
+    width: 8px;
+    height: 8px;
+    background: var(--lime);
+    box-shadow: 0 0 12px rgba(183,255,0,0.7);
+}
+
+.evidence-nav {
+    position: absolute;
+    top: 50%;
+    z-index: 5;
+    display: grid;
+    place-items: center;
+    width: 42px;
+    height: 42px;
+    border: 3px solid var(--chalk-white);
+    border-radius: 50%;
+    background: rgba(21,21,21,0.82);
+    color: var(--lime);
+    font-family: var(--font-display);
+    font-size: 34px;
+    line-height: 1;
+    transform: translateY(-50%);
+    box-shadow: 0 0 18px rgba(183,255,0,0.22);
+}
+
+.evidence-nav:hover {
+    background: var(--lime);
+    color: var(--chalk-black);
+}
+
+.evidence-nav:disabled {
+    opacity: 0.28;
+    pointer-events: none;
+    box-shadow: none;
+}
+
+.evidence-prev {
+    left: 12px;
+}
+
+.evidence-next {
+    right: 12px;
 }
 
 .evidence-strip img,
@@ -1523,13 +1761,23 @@ button,
 }
 
 @keyframes pixel-idle {
-    0%, 100% { transform: translateY(8px) scale(1.08); }
-    50% { transform: translateY(0) scale(1.08); }
+    0%, 100% { transform: translate(var(--look-x), var(--look-y)) translateY(8px) scale(1); }
+    25% { transform: translate(var(--look-x), var(--look-y)) translateY(4px) scale(1); }
+    50% { transform: translate(var(--look-x), var(--look-y)) translateY(0) scale(1); }
+    75% { transform: translate(var(--look-x), var(--look-y)) translateY(4px) scale(1); }
 }
 
 @keyframes pixel-look {
-    0%, 100% { transform: translate(-4px, 6px) scale(1.08); }
-    50% { transform: translate(4px, 0) scale(1.08); }
+    0%, 100% { transform: translate(calc(var(--look-x) - 5px), calc(var(--look-y) + 6px)) scale(1); }
+    34% { transform: translate(calc(var(--look-x) + 5px), var(--look-y)) scale(1); }
+    68% { transform: translate(calc(var(--look-x) + 2px), calc(var(--look-y) + 3px)) scale(1); }
+}
+
+@keyframes pixel-hop {
+    0%, 100% { transform: translate(var(--look-x), var(--look-y)) translateY(8px) scale(1); }
+    25% { transform: translate(var(--look-x), var(--look-y)) translateY(-8px) scale(1); }
+    50% { transform: translate(var(--look-x), var(--look-y)) translateY(2px) scale(1); }
+    75% { transform: translate(var(--look-x), var(--look-y)) translateY(-4px) scale(1); }
 }
 
 @keyframes pixel-shadow-breathe {
@@ -1542,40 +1790,79 @@ button,
     50% { transform: rotate(12deg) scale(1.08); }
 }
 
+@keyframes pixel-thought-pop {
+    0%, 100% { transform: translateY(0) scale(1); opacity: 0.45; }
+    25% { transform: translateY(-6px) scale(1); opacity: 1; }
+    50% { transform: translateY(0) scale(1.18); opacity: 0.86; }
+    75% { transform: translateY(4px) scale(1); opacity: 0.62; }
+}
+
 @keyframes pixel-blink {
     0%, 92%, 100% { height: var(--px); }
     94%, 96% { height: calc(var(--px) / 2); transform: translateY(calc(var(--px) / 2)); }
 }
 
+@keyframes pixel-svg-blink {
+    0%, 92%, 100% { transform: translate(var(--eye-x, 0), var(--eye-y, 0)) scaleY(1); }
+    94%, 96% { transform: translate(var(--eye-x, 0), calc(var(--eye-y, 0) + 3px)) scaleY(0.25); }
+}
+
 @keyframes pixel-wave {
+    0%, 84%, 100% { transform: translate(0, 0) rotate(0deg); }
+    88% { transform: translate(6px, -6px) rotate(-24deg); }
+    92% { transform: translate(12px, -12px) rotate(-42deg); }
+    96% { transform: translate(6px, -6px) rotate(-18deg); }
+}
+
+@keyframes pixel-big-wave {
     0%, 100% { transform: translate(0, 0) rotate(0deg); }
-    33% { transform: translate(var(--px), calc(var(--px) * -1)) rotate(-24deg); }
-    66% { transform: translate(calc(var(--px) * 2), calc(var(--px) * -2)) rotate(-42deg); }
+    25% { transform: translate(6px, -6px) rotate(-28deg); }
+    50% { transform: translate(12px, -18px) rotate(-56deg); }
+    75% { transform: translate(6px, -6px) rotate(-20deg); }
 }
 
 @keyframes pixel-type {
-    0%, 100% { transform: translate(0, var(--px)) rotate(14deg); }
-    50% { transform: translate(calc(var(--px) * -1), calc(var(--px) * 2)) rotate(4deg); }
+    0%, 100% { transform: translate(0, 7px) rotate(10deg); }
+    50% { transform: translate(-5px, 11px) rotate(2deg); }
 }
 
 @keyframes pixel-left-arm {
     0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(var(--px)); }
+    25%, 75% { transform: translateY(3px); }
+    50% { transform: translateY(6px); }
+}
+
+@keyframes pixel-hair-sway {
+    0%, 100% { transform: translateX(0); }
+    50% { transform: translateX(calc(var(--px) / -2)); }
+}
+
+@keyframes pixel-bangs-sway {
+    0%, 100% { transform: translateX(0); }
+    50% { transform: translateX(2px); }
+}
+
+@keyframes pixel-scarf-sway {
+    0%, 100% { transform: translateX(0); }
+    50% { transform: translateX(4px); }
 }
 
 @keyframes pixel-leg-left {
     0%, 100% { transform: translateX(0); }
-    50% { transform: translateX(calc(var(--px) * -1)); }
+    25%, 75% { transform: translateX(-2px); }
+    50% { transform: translateX(-5px); }
 }
 
 @keyframes pixel-leg-right {
     0%, 100% { transform: translateX(0); }
-    50% { transform: translateX(var(--px)); }
+    25%, 75% { transform: translateX(2px); }
+    50% { transform: translateX(5px); }
 }
 
 @keyframes pixel-laptop-glow {
     0%, 100% { filter: brightness(1); }
-    50% { filter: brightness(1.28); }
+    35% { filter: brightness(1.28); }
+    70% { filter: brightness(1.12); }
 }
 
 @media (max-width: 980px) {
@@ -1636,7 +1923,8 @@ button,
     }
 
     .pixel-character {
-        transform: translateY(8px) scale(0.9);
+        width: min(160px, 62%);
+        transform: translateY(8px);
     }
 
     .evidence-strip img:nth-child(1),
@@ -1654,6 +1942,21 @@ button,
 
     .phone-collage img:nth-child(2) {
         left: 28%;
+    }
+
+    .capability-matrix {
+        grid-template-columns: 1fr;
+    }
+
+    .system-flow {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .system-flow i {
+        width: 2px;
+        height: 18px;
+        margin-left: 18px;
     }
 
     .repo-card {
