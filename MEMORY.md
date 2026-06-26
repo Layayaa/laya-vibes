@@ -7,6 +7,7 @@
 
 ## Decisions
 
+- 2026-06-26: `index-v2.html` added a standalone `实习经历` section sourced from `伍可莹简历v2.docx`, presenting 展望数科 全栈工程师实习生 experience as ToB AI demand discovery, client research, 知语 AI platform development, 旌灵云仓小程序 delivery, and AI-assisted development.
 - 2026-06-26: GitHub search found strong resume-skill candidates: `couragec/LLMInternSkill` is the best fit for LLM/AI internship resume diagnosis, JD tailoring, evidence boundaries, interview grilling, and upgrade plans; `cosen1024/resume-builder-skill` is best for resume PDF/HTML generation and templates; `Paramchoudhary/ResumeSkills` has many generic career/resume skills but is less Codex-specific.
 - 2026-06-26: Official OpenAI curated skills list has no dedicated resume/career/job-application skill. For intern resume editing, best path is a custom local skill focused on resume diagnosis, internship positioning, quantified project bullets, ATS keywords, and Chinese/English versions; install `pdf` only if resume parsing/export from PDF is needed.
 - 2026-06-18: Created project-local `AGENTS.md` and `MEMORY.md` because both were missing and the template directory `C:\Users\LAYA\.codex\templates` was not present.

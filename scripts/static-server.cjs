@@ -2,6 +2,12 @@ const fs = require('fs');
 const http = require('http');
 const path = require('path');
 
+let aiDailyHandlerPromise;
+const getAiDailyHandler = () => {
+  aiDailyHandlerPromise ||= import('../api/ai-daily.js').then((module) => module.default || module.handler);
+  return aiDailyHandlerPromise;
+};
+
 const root = path.resolve(__dirname, '..');
 const port = Number(process.argv[2] || 8792);
 const host = '127.0.0.1';
@@ -19,6 +25,28 @@ const mime = {
 
 http.createServer((request, response) => {
   const pathname = decodeURIComponent(request.url.split('?')[0]);
+
+  if (pathname === '/api/ai-daily') {
+    getAiDailyHandler()
+      .then((aiDailyHandler) => aiDailyHandler(request, {
+        setHeader: (...args) => response.setHeader(...args),
+        status(statusCode) {
+          response.statusCode = statusCode;
+          return this;
+        },
+        json(payload) {
+          response.setHeader('Content-Type', 'application/json;charset=utf-8');
+          response.end(JSON.stringify(payload));
+        },
+      }))
+      .catch((error) => {
+        response.statusCode = 500;
+        response.setHeader('Content-Type', 'application/json;charset=utf-8');
+        response.end(JSON.stringify({ error: error.message }));
+      });
+    return;
+  }
+
   const route = pathname === '/' ? '/index.html' : pathname;
   const filePath = path.resolve(root, `.${route}`);
 
